@@ -23,7 +23,7 @@ TTL = 64
 port1 = 80
 port2 = 1010
 #The num_pkts set here must be changed in simulacao.v(line 1054), too
-NUM_PKTS = 1
+NUM_PKTS = 3
 
 eth_hdr=14
 ipv4_hdr=20
