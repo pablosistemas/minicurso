@@ -50,7 +50,7 @@ module minifirewall
 
       output reg                          wr_0_req,
       output reg [19-1:0]                 wr_0_addr,
-      input [DATA_WIDTH-1:0]              wr_0_data,
+      output reg [DATA_WIDTH-1:0]         wr_0_data,
       input                               wr_0_ack,
 
       // misc
@@ -72,7 +72,8 @@ module minifirewall
    localparam                    VERIFICA_PORTA = 7;
    localparam                    PAYLOAD =8;
 
-   localparam                    FIM_REGRAS = 19'h4;
+   localparam                    FIM_REGRAS = 19'hC;
+   localparam                    NUM_RULES = 4;
 
    localparam ICMP        = 'h01;
    localparam TCP        = 'h06;
@@ -93,10 +94,16 @@ module minifirewall
    reg [3:0]                     state, state_next;
       
    reg                           wr_0_req_next, rd_0_req_next;
+   reg [DATA_WIDTH-1:0]          wr_0_data_next, rd_0_data_next;
+   reg [SRAM_ADDR_WIDTH-1:0]     wr_0_addr_next, rd_0_addr_next;
 
-   reg [SRAM_ADDR_WIDTH-1:0]     rd_0_addr_next;
    reg [SRAM_ADDR_WIDTH-1:0]     next_addr_rd_next;
    reg [SRAM_ADDR_WIDTH-1:0]     next_addr_rd;
+
+   reg [31:0]                    num_TCP, num_TCP_next;
+   wire [`CPCI_NF2_DATA_WIDTH-1:0]   endereco19_porta13;
+
+   reg [2:0]                     read_rules, read_rules_next;
 
    //------------------------- Local assignments -------------------------------
 
@@ -104,10 +111,9 @@ module minifirewall
    assign out_data   = in_fifo_data;
    assign out_ctrl   = in_fifo_ctrl;
 
-
    //------------------------- Modules-------------------------------
 
-   fallthrough_small_fifo #(
+   fallthrough_small_fifo_old #(
       .WIDTH(CTRL_WIDTH+DATA_WIDTH),
       .MAX_DEPTH_BITS(2)
    ) input_fifo (
@@ -117,7 +123,7 @@ module minifirewall
       .dout          ({in_fifo_ctrl, in_fifo_data}),
       .full          (),
       .nearly_full   (in_fifo_nearly_full),
-      .prog_full     (),
+      //.prog_full     (),
       .empty         (in_fifo_empty),
       .reset         (reset),
       .clk           (clk)
@@ -130,6 +136,7 @@ module minifirewall
       .REG_ADDR_WIDTH      (1),                 // Width of block addresses -- eg. MODULE_REG_ADDR_WIDTH
       .NUM_COUNTERS        (0),                 // Number of counters
       .NUM_SOFTWARE_REGS   (0),                 // Number of sw regs
+      //.NUM_SOFTWARE_REGS   (0),                 // Number of sw regs
       .NUM_HARDWARE_REGS   (0)                  // Number of hw regs
    ) module_regs (
       .reg_req_in       (reg_req_in),
@@ -151,7 +158,7 @@ module minifirewall
       .counter_decrement(),
 
       // --- SW regs interface
-      .software_regs    (),
+      .software_regs    ({endereco19_porta13}),
 
       // --- HW regs interface
       .hardware_regs    (),
@@ -171,8 +178,26 @@ module minifirewall
       wr_0_req_next = 0;
 
       state_next = state;
+      
+      num_TCP = num_TCP_next;
 
       next_addr_rd_next = next_addr_rd;
+
+/*
+      wr_0_req_next = reg_ack_out;
+      wr_0_data_next = {59'h0,endereco19_porta13[12:0]};
+      wr_0_addr_next = endereco19_porta13[31:13];
+*/
+      wr_0_req_next = 0;
+      wr_0_data_next = wr_0_data;
+      wr_0_addr_next = wr_0_addr;
+
+      rd_0_req_next = 0;
+      rd_0_data_next = rd_0_data;
+      rd_0_addr_next = rd_0_addr;
+
+      read_rules_next = read_rules;      
+
       case(state)
       SKIP_HDR: begin
          if (!in_fifo_empty && out_rdy) begin
@@ -187,7 +212,7 @@ module minifirewall
          end
       end
       WORD2_CHECK_IPV4: begin
-         $display("WORD2\n");
+         $display("WORD2MASTER\n");
          if (!in_fifo_empty && out_rdy) begin
             out_wr = 1;
             in_fifo_rd_en = 1;
@@ -206,6 +231,7 @@ module minifirewall
             case(in_fifo_data[7:0]) //protocolo
                TCP: begin
                   state_next = WORD4_IP_ADDR;
+                  num_TCP_next = num_TCP + 'h1;
                end
                default: begin
                   state_next = PAYLOAD;
@@ -232,11 +258,22 @@ module minifirewall
       CONSULTA_REGRAS: begin
          rd_0_req_next = 1;
          rd_0_addr_next = next_addr_rd;
-         next_addr_rd_next = next_addr_rd + 'h1;
+         next_addr_rd_next = next_addr_rd + 'h4;
          if(next_addr_rd > FIM_REGRAS)
             state_next = VERIFICA_PORTA;
          else
             state_next = CONSULTA_REGRAS;
+      end
+      VERIFICA_PORTA: begin
+         if(read_rules < NUM_RULES) begin
+            if(rd_0_ack) 
+               read_rules_next = read_rules + 'h1;
+            else
+               read_rules_next = read_rules;
+            state_next = VERIFICA_PORTA;
+         end
+         else
+            state_next = PAYLOAD;
       end
       PAYLOAD: begin
          if (!in_fifo_empty && out_rdy) begin
@@ -257,11 +294,17 @@ module minifirewall
          rd_0_req <= 0;
          state <= 1;
          next_addr_rd <= 0;
+         num_TCP <= 0;
       end
       else begin
          state <= state_next;
+         // SRAM
          rd_0_req <= rd_0_req_next;
+         rd_0_addr <= rd_0_addr_next;
          wr_0_req <= wr_0_req_next;
+         wr_0_data <= wr_0_data_next;
+         wr_0_addr <= wr_0_addr_next;
+         read_rules <= read_rules_next;
       end
    end
 
