@@ -111,8 +111,8 @@
         $display($time, " ERROR: Attempt to write to full FIFO: %m");
       if (rd_en && depth == 'h0)
         $display($time, " ERROR: Attempt to read an empty FIFO: %m");
-      $display("queue_fall: %h, %h, %h, %h\n",queue[0],
-         queue[1],queue[2],queue[3]);
+      //$display("queue_fall: %h, %h, %h, %h\n",queue[0],
+      //   queue[1],queue[2],queue[3]);
    end
    // synthesis translate_on
 

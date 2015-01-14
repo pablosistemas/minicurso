@@ -23,7 +23,7 @@ TTL = 64
 port1 = 80
 port2 = 1010
 #The num_pkts set here must be changed in simulacao.v(line 1054), too
-NUM_PKTS = 3
+NUM_PKTS = 25
 
 eth_hdr=14
 ipv4_hdr=20
@@ -51,7 +51,7 @@ nftest_barrier()
 '''
 
 #add recently
-for iter in range(2):
+for iter in range(1):
    for i in range(NUM_PKTS):
       hdr.dport=port1*(i+1)
       hdr.sport=port2*(i+2)
@@ -70,7 +70,7 @@ for iter in range(2):
       print "sequencenum %d"%(seqn)
 
       nftest_send_phy('nf2c0', pkt)
-      nftest_expect_dma('nf2c0', pkt)
+      #nftest_expect_dma('nf2c0', pkt)
 
    #ACK+DATA
    for i in range(NUM_PKTS):
@@ -93,6 +93,6 @@ for iter in range(2):
       print "acknum %d"%(pkt.ack)
 
       nftest_send_phy('nf2c0', pkt)
-      nftest_expect_dma('nf2c0', pkt)
+      #nftest_expect_dma('nf2c0', pkt)
 
 nftest_finish()
