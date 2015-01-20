@@ -1,0 +1,1588 @@
+Release 10.1.03 - par K.39 (lin)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+Fri Jan 16 12:03:44 2015
+
+  SmartGuide Results
+  ------------------
+  This section describes the guide results after invoking the Router. This
+  report accurately reflects the differences between the input design
+  and the guide design.
+
+  Number of Components in the input design    |  12307
+    Number of guided Components               |  12002 out of  12307  97.5%
+    Number of re-implemented Components       |    227 out of  12307   1.8%
+    Number of new/changed Components          |     78 out of  12307   0.6%
+  Number of Nets in the input design          |  28880
+    Number of guided Nets                     |  26586 out of  28880  92.1%
+    Number of partially guided Nets           |   1092 out of  28880   3.8%
+    Number of re-routed Nets                  |   1065 out of  28880   3.7%
+    Number of new/changed Nets                |    137 out of  28880   0.5%
+
+
+The following Components were re-implemented.
+---------------------------------------------
+ nf2_core/user_data_path/minifirewall/input_fifo/dout_d1(74) : SLICE_X33Y81.
+ nf2_core/user_data_path/minifirewall/input_fifo/dout_d1(77) : SLICE_X35Y83.
+ nf2_core/user_data_path/minifirewall/input_fifo/dout_d1(78) : SLICE_X36Y83.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_cnt(1) : SLICE_X97Y78.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(6) : SLICE_X2Y111.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(18) : SLICE_X0Y88.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(19) : SLICE_X0Y77.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(61) : SLICE_X2Y94.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(62) : SLICE_X1Y99.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(39) : SLICE_X0Y116.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(56) : SLICE_X1Y98.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(57) : SLICE_X3Y102.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(58) : SLICE_X1Y96.
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data(10) : SLICE_X11Y111.
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data(24) : SLICE_X1Y36.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N69 : SLICE_X32Y124.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N69 : SLICE_X90Y142.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N69 : SLICE_X62Y87.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N69 : SLICE_X116Y106.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N49 : SLICE_X107Y103.
+ nf2_core/mac_groups[3].nf2_mac_grp/tx_queue/tx_pkt_sent_sync/ackB_d1 : SLICE_X63Y87.
+ nf2_core/nf2_dma/nf2_dma_bus_fsm/tx_pkt_len_nxt(5)8_2 : SLICE_X103Y165.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/tx_queue_delta_and0000_2 : SLICE_X87Y66.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/Eqn_031_2 : SLICE_X77Y85.
+ nf2_core/cpu_q_dma_rd_data(2)(25) : SLICE_X75Y92.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/Eqn_031_2 : SLICE_X94Y95.
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/Eqn_031_2 : SLICE_X46Y100.
+ nf2_core/nf2_dma/nf2_dma_bus_fsm/N7 : SLICE_X102Y163.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/N14 : SLICE_X84Y63.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N14 : SLICE_X68Y92.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/N14 : SLICE_X101Y81.
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/N14 : SLICE_X39Y105.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/N231 : SLICE_X12Y52.
+ nf2_core/sram64.sram_arbiter/sram_we_or0000 : SLICE_X12Y87.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_din(0) : SLICE_X52Y93.
+ nf2_core/user_data_path/output_queues/input_fifo/fifo/depth_not0001 : SLICE_X72Y92.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N81 : SLICE_X66Y81.
+ nf2_core/core_256kb_0_reg_addr(131) : SLICE_X74Y87.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)162 : SLICE_X30Y117.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)206 : SLICE_X88Y139.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)206 : SLICE_X109Y103.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data1610 : SLICE_X6Y65.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/_old_delta_91(10) : SLICE_X91Y93.
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/_old_delta_91(10) : SLICE_X39Y106.
+ nf2_core/user_data_path/output_queues/oq_header_parser/input_state_next(0)1336 : SLICE_X43Y98.
+ nf2_core/mac_groups[0].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or000042_2 :
+SLICE_X64Y18.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/prog_ful
+l_i_mux000327_SW0/O : SLICE_X13Y111.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/prog_ful
+l_i_mux000327_SW0/O : SLICE_X99Y63.
+ nf2_core/sram64.sram_arbiter/sram_bw_mux0000(4)1 : SLICE_X12Y60.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_mux0000(0)12_1 : SLICE_X97Y147.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_mux0000(0)12_1 : SLICE_X68Y91.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/_old_delta_91(11) : SLICE_X70Y99.
+ nf2_core/nf2_dma/nf2_dma_que_intfc/N75 : SLICE_X76Y94.
+ nf2_core/user_data_path/output_queues/oq_header_parser/N01 : SLICE_X42Y101.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(31) : SLICE_X74Y106.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(28) : SLICE_X74Y105.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_out(29) : SLICE_X80Y80.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(29) : SLICE_X70Y109.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(25) : SLICE_X70Y108.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(24) : SLICE_X74Y107.
+ nf2_core/user_data_path/minifirewall/input_fifo/dout_d1(79) : SLICE_X32Y81.
+ nf2_core/in_data(6)(22) : SLICE_X36Y92.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/rx_pkt_byte_cnt(7) : SLICE_X99Y88.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N2 : SLICE_X62Y95.
+ nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0) : SLICE_X31Y74.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_out(21) : SLICE_X80Y82.
+ nf2_core/mac_groups[0].nf2_mac_grp/gig_eth_mac/mac_tx/tx_state_FSM_FFd9 : SLICE_X56Y26.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(18) : SLICE_X74Y102.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(20) : SLICE_X74Y104.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N54 : SLICE_X71Y99.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N591 : SLICE_X105Y107.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N611 : SLICE_X89Y148.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N611 : SLICE_X104Y107.
+ nf2_core/user_data_path/minifirewall/num_TCP_next_and0000 : SLICE_X31Y81.
+ nf2_core/user_data_path/op_lut_in_data(18) : SLICE_X30Y89.
+ nf2_core/user_data_path/op_lut_in_data(38) : SLICE_X34Y89.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(2)47 : SLICE_X64Y78.
+ nf2_core/user_data_path/op_lut_in_data(46) : SLICE_X31Y71.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(4)47 : SLICE_X67Y83.
+ nf2_core/user_data_path/op_lut_in_data(54) : SLICE_X34Y82.
+ nf2_core/user_data_path/op_lut_in_data(56) : SLICE_X33Y84.
+ nf2_core/user_data_path/op_lut_in_data(63) : SLICE_X31Y80.
+ nf2_core/user_data_path/op_lut_in_data(34) : SLICE_X30Y90.
+ nf2_core/user_data_path/op_lut_in_data(57) : SLICE_X33Y83.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_dout(16) : SLICE_X31Y88.
+ nf2_core/user_data_path/minifirewall/out_ctrl(4)28 : SLICE_X31Y84.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N28 : SLICE_X9Y103.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N22 : SLICE_X11Y106.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N20 : SLICE_X13Y88.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N26 : SLICE_X10Y95.
+ nf2_core/user_data_path/minifirewall/input_fifo/depth(3) : SLICE_X30Y74.
+ nf2_core/nf2_mdio/state(1) : SLICE_X32Y86.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/Mmux_reg_data_out_mux00002858 : SLICE_X9Y88.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/Mmux__old_delta_91_4_f5 : SLICE_X58Y95.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N18 : SLICE_X8Y102.
+ nf2_core/user_data_path/op_lut_in_data(61) : SLICE_X32Y84.
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data(22) : SLICE_X0Y29.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/tmp_ram_rd_en :
+SLICE_X36Y88.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(19) : SLICE_X56Y105.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(20) : SLICE_X60Y113.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(30) : SLICE_X60Y112.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(12) : SLICE_X56Y102.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(21) : SLICE_X62Y107.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(24) : SLICE_X58Y114.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(31) : SLICE_X62Y112.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(15) : SLICE_X56Y107.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(23) : SLICE_X60Y111.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(27) : SLICE_X56Y110.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(1) : SLICE_X84Y140.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(3) : SLICE_X86Y140.
+ nf2_core/core_256kb_0_reg_rd_wr_L(14) : SLICE_X62Y109.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/rx_fifo_64.gmac_rx_fifo/BU2/U0/gen_as.fgas/normgen.flblk/thrmod/pflogic/dif
+f_pntr_addsub0000<5> : SLICE_X2Y147.
+ nf2_core/mac_groups[0].nf2_mac_grp/gig_eth_mac/mac_tx/Mrom_max_data_length10 : SLICE_X50Y34.
+ nf2_core/user_data_path/minifirewall/Mcompar_state_next_cmp_eq0007_cy(1) : SLICE_X1Y84.
+ nf2_core/user_data_path/minifirewall/Mcompar_state_next_cmp_eq0007_cy(3) : SLICE_X1Y85.
+ nf2_core/user_data_path/op_lut_in_ctrl(0) : SLICE_X32Y85.
+ nf2_core/in_wr(2) : SLICE_X30Y93.
+ nf2_core/user_data_path/minifirewall/input_fifo/depth(1) : SLICE_X32Y75.
+ nf2_core/user_data_path/minifirewall/input_fifo/depth(0) : SLICE_X30Y75.
+ nf2_core/user_data_path/output_port_lookup/input_fifo/depth(0) : SLICE_X30Y83.
+ nf2_core/user_data_path/minifirewall/N100 : SLICE_X30Y85.
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(75) : SLICE_X29Y70.
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(73) : SLICE_X33Y80.
+ nf2_core/in_ctrl(2)(0) : SLICE_X36Y80.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/curr_fwft_st
+ate_FSM_FFd2 : SLICE_X37Y88.
+ nf2_core/core_256kb_0_reg_wr_data(359) : SLICE_X35Y89.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded(52) : SLICE_X34Y93.
+ nf2_core/in_data(2)(48) : SLICE_X32Y90.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/curr_fwft_st
+ate_FSM_FFd1 : SLICE_X34Y88.
+ nf2_core/core_256kb_0_reg_wr_data(356) : SLICE_X33Y90.
+ nf2_core/core_256kb_0_reg_wr_data(354) : SLICE_X32Y82.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N671.93254 : SLICE_X35Y122.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N671.93256 : SLICE_X92Y143.
+ nf2_core/in_data(2)(47) : SLICE_X35Y87.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_din(18) : SLICE_X71Y101.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/rx_num_underruns_delta(3) : SLICE_X62Y83.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt(1) : SLICE_X61Y98.
+ nf2_core/sram64.sram_arbiter/sram_addr1_addsub0000(4) : SLICE_X0Y68.
+ nf2_core/core_256kb_0_reg_rd_data(353) : SLICE_X60Y115.
+ nf2_core/sram64.sram_arbiter/sram_addr1_addsub0000(12) : SLICE_X0Y72.
+ nf2_core/user_data_path/minifirewall/N8 : SLICE_X33Y82.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(13) : SLICE_X59Y104.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N1 : SLICE_X59Y92.
+ nf2_core/core_256kb_0_reg_wr_data(453) : SLICE_X57Y103.
+ nf2_core/mac_groups[3].nf2_mac_grp/tx_pkt_byte_cnt(2) : SLICE_X60Y92.
+ nf2_core/core_4mb_reg_wr_data(33) : SLICE_X59Y111.
+ nf2_core/core_256kb_0_reg_rd_data(355) : SLICE_X59Y110.
+ nf2_core/core_256kb_0_reg_wr_data(473) : SLICE_X59Y113.
+ nf2_core/core_256kb_0_reg_wr_data(467) : SLICE_X59Y112.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(4) : SLICE_X63Y99.
+ nf2_core/user_data_path/output_queues/Mcompar_oq_has_space(5)_lut(8)_2 : SLICE_X61Y108.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/control_reg(7) : SLICE_X61Y107.
+ nf2_core/core_256kb_0_reg_wr_data(470) : SLICE_X61Y112.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/control_reg(10) : SLICE_X61Y110.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(28) : SLICE_X83Y154.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/rx_num_underruns_delta(2) : SLICE_X65Y81.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(6)51_SW0_1 : SLICE_X65Y78.
+ nf2_core/cpu_q_dma_wr_data(2)(15) : SLICE_X63Y96.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_dout(38) : SLICE_X64Y82.
+ nf2_core/cpu_q_dma_wr_data(1)(16) : SLICE_X60Y97.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N57 : SLICE_X71Y94.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(6) : SLICE_X73Y97.
+ nf2_core/core_256kb_0_reg_wr_data(319) : SLICE_X71Y107.
+ nf2_core/core_256kb_0_reg_addr(135) : SLICE_X73Y107.
+ nf2_core/core_256kb_0_reg_wr_data(311) : SLICE_X71Y104.
+ nf2_core/core_256kb_0_reg_rd_data(289) : SLICE_X73Y106.
+ nf2_core/cpu_q_dma_wr_data(2)(9) : SLICE_X71Y96.
+ nf2_core/core_256kb_0_reg_wr_data(300) : SLICE_X75Y107.
+ nf2_core/core_256kb_0_reg_rd_data(448) : SLICE_X71Y108.
+ nf2_core/core_256kb_0_reg_wr_data(307) : SLICE_X71Y106.
+ nf2_core/user_data_path/minifirewall/input_fifo/depth(2) : SLICE_X31Y75.
+ nf2_core/core_256kb_0_reg_rd_data(264) : SLICE_X75Y106.
+ nf2_core/user_data_path/output_queues/input_fifo_ctrl_out_prev(1) : SLICE_X75Y105.
+ nf2_core/user_data_path/output_queues/input_fifo_ctrl_out_prev(0) : SLICE_X73Y104.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N29 : SLICE_X80Y84.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded(63) : SLICE_X30Y87.
+ nf2_core/mac_groups[0].nf2_mac_grp/tx_pkt_word_cnt(0) : SLICE_X83Y87.
+ nf2_core/core_256kb_0_reg_wr_data(277) : SLICE_X83Y85.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(31) : SLICE_X83Y155.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_tx_queue/tx_fifo_data_out(11) : SLICE_X86Y141.
+ nf2_core/core_256kb_0_reg_req(8) : SLICE_X87Y77.
+ nf2_core/user_data_path/op_lut_in_ctrl(7) : SLICE_X34Y87.
+ nf2_core/mac_groups[0].nf2_mac_grp/tx_pkt_word_cnt(8) : SLICE_X87Y78.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_addr(0) : SLICE_X91Y146.
+ nf2_core/user_data_path/minifirewall/out_ctrl(6)28 : SLICE_X31Y82.
+ nf2_core/core_256kb_0_reg_addr(136) : SLICE_X72Y111.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(6)51_SW0_1 : SLICE_X90Y147.
+ nf2_core/core_256kb_0_reg_addr(137) : SLICE_X70Y98.
+ nf2_core/user_data_path/output_queues/rd_dst_oq : SLICE_X73Y108.
+ nf2_core/core_256kb_0_reg_wr_data(344) : SLICE_X95Y100.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_in(26) : SLICE_X95Y103.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/rx_pkt_byte_cnt(5) : SLICE_X96Y102.
+ nf2_core/core_256kb_0_reg_wr_data(340) : SLICE_X94Y102.
+ nf2_core/user_data_path/output_port_lookup/input_fifo/Mram_queue33/SP : SLICE_X32Y88.
+ nf2_core/user_data_path/oq_in_data(32) : SLICE_X33Y88.
+ nf2_core/user_data_path/output_port_lookup/input_fifo/Mram_queue17/SP : SLICE_X34Y91.
+ nf2_core/user_data_path/oq_in_data(16) : SLICE_X35Y91.
+ nf2_core/user_data_path/output_port_lookup/input_fifo/Mram_queue50/SP : SLICE_X36Y90.
+ nf2_core/user_data_path/oq_in_data(49) : SLICE_X37Y90.
+ nf2_core/user_data_path/output_port_lookup/input_fifo/Mram_queue43/SP : SLICE_X30Y91.
+ nf2_core/user_data_path/oq_in_data(42) : SLICE_X31Y91.
+ nf2_core/user_data_path/output_port_lookup/input_fifo/Mram_queue35/SP : SLICE_X32Y91.
+ nf2_core/user_data_path/oq_in_data(34) : SLICE_X33Y91.
+ nf2_core/user_data_path/output_port_lookup/input_fifo/Mram_queue19/SP : SLICE_X36Y94.
+ nf2_core/user_data_path/oq_in_data(18) : SLICE_X37Y94.
+ nf2_core/user_data_path/output_port_lookup/input_fifo/Mram_queue52/SP : SLICE_X32Y93.
+ nf2_core/user_data_path/oq_in_data(51) : SLICE_X33Y93.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data1028_2 : SLICE_X30Y88.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N671.99975 : SLICE_X111Y107.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N71.100000 : SLICE_X107Y102.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded_48_mux0000138_REPLICA_1 : SLICE_X37Y80.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_1_REPLICA_2 : SLICE_X59Y88.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(24) : SLICE_X0Y80.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or0000172 :
+SLICE_X0Y126.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<0> : SLICE_X0Y128.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.rd/gras.rsts/ram_empty_fb_i_or0000110 :
+SLICE_X1Y135.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N47 : SLICE_X28Y125.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded_48_mux0000138_1 : SLICE_X30Y84.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N611.98130 : SLICE_X30Y124.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded_48_mux0000136_2 : SLICE_X33Y85.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N47 : SLICE_X64Y80.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N671 : SLICE_X64Y81.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N71.99057 : SLICE_X65Y83.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/rx_pkt_byte_cnt(10) : SLICE_X70Y94.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_f
+b : SLICE_X80Y75.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/Eqn_031_2 : SLICE_X85Y69.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N51 : SLICE_X106Y103.
+
+
+The following Components are new/changed.
+-----------------------------------------
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(6) : SLICE_X2Y111.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(18) : SLICE_X0Y88.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(19) : SLICE_X0Y77.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(61) : SLICE_X2Y94.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(62) : SLICE_X1Y99.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(39) : SLICE_X0Y116.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(56) : SLICE_X1Y98.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(57) : SLICE_X3Y102.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(58) : SLICE_X1Y96.
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data(10) : SLICE_X11Y111.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N69 : SLICE_X32Y124.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N69 : SLICE_X90Y142.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N69 : SLICE_X62Y87.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N69 : SLICE_X116Y106.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N49 : SLICE_X107Y103.
+ nf2_core/nf2_dma/nf2_dma_bus_fsm/tx_pkt_len_nxt(5)8_2 : SLICE_X103Y165.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/tx_queue_delta_and0000_2 : SLICE_X87Y66.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/Eqn_031_2 : SLICE_X77Y85.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/Eqn_031_2 : SLICE_X94Y95.
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/Eqn_031_2 : SLICE_X46Y100.
+ nf2_core/nf2_dma/nf2_dma_bus_fsm/N7 : SLICE_X102Y163.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/N14 : SLICE_X84Y63.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N14 : SLICE_X68Y92.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/N14 : SLICE_X101Y81.
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/N14 : SLICE_X39Y105.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/N231 : SLICE_X12Y52.
+ nf2_core/sram64.sram_arbiter/sram_we_or0000 : SLICE_X12Y87.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_din(0) : SLICE_X52Y93.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N81 : SLICE_X66Y81.
+ nf2_core/core_256kb_0_reg_addr(131) : SLICE_X74Y87.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)162 : SLICE_X30Y117.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)206 : SLICE_X88Y139.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)206 : SLICE_X109Y103.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data1610 : SLICE_X6Y65.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/_old_delta_91(10) : SLICE_X91Y93.
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/_old_delta_91(10) : SLICE_X39Y106.
+ nf2_core/user_data_path/output_queues/oq_header_parser/input_state_next(0)1336 : SLICE_X43Y98.
+ nf2_core/mac_groups[0].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or000042_2 :
+SLICE_X64Y18.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/prog_ful
+l_i_mux000327_SW0/O : SLICE_X13Y111.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/prog_ful
+l_i_mux000327_SW0/O : SLICE_X99Y63.
+ nf2_core/sram64.sram_arbiter/sram_bw_mux0000(4)1 : SLICE_X12Y60.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_mux0000(0)12_1 : SLICE_X97Y147.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_mux0000(0)12_1 : SLICE_X68Y91.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/_old_delta_91(11) : SLICE_X70Y99.
+ nf2_core/nf2_dma/nf2_dma_que_intfc/N75 : SLICE_X76Y94.
+ nf2_core/user_data_path/output_queues/oq_header_parser/N01 : SLICE_X42Y101.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N591 : SLICE_X105Y107.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N611 : SLICE_X89Y148.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N611 : SLICE_X104Y107.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N28 : SLICE_X9Y103.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N22 : SLICE_X11Y106.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N20 : SLICE_X13Y88.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N26 : SLICE_X10Y95.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/Mmux_reg_data_out_mux00002858 : SLICE_X9Y88.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N18 : SLICE_X8Y102.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/rx_fifo_64.gmac_rx_fifo/BU2/U0/gen_as.fgas/normgen.flblk/thrmod/pflogic/dif
+f_pntr_addsub0000<5> : SLICE_X2Y147.
+ nf2_core/user_data_path/minifirewall/Mcompar_state_next_cmp_eq0007_cy(1) : SLICE_X1Y84.
+ nf2_core/user_data_path/minifirewall/Mcompar_state_next_cmp_eq0007_cy(3) : SLICE_X1Y85.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N671.93254 : SLICE_X35Y122.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N671.93256 : SLICE_X92Y143.
+ nf2_core/sram64.sram_arbiter/sram_addr1_addsub0000(4) : SLICE_X0Y68.
+ nf2_core/sram64.sram_arbiter/sram_addr1_addsub0000(12) : SLICE_X0Y72.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N671.99975 : SLICE_X111Y107.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N71.100000 : SLICE_X107Y102.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded_48_mux0000138_REPLICA_1 : SLICE_X37Y80.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_1_REPLICA_2 : SLICE_X59Y88.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(24) : SLICE_X0Y80.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or0000172 :
+SLICE_X0Y126.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<0> : SLICE_X0Y128.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.rd/gras.rsts/ram_empty_fb_i_or0000110 :
+SLICE_X1Y135.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N47 : SLICE_X28Y125.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded_48_mux0000138_1 : SLICE_X30Y84.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N611.98130 : SLICE_X30Y124.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded_48_mux0000136_2 : SLICE_X33Y85.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N47 : SLICE_X64Y80.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N71.99057 : SLICE_X65Y83.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/Eqn_031_2 : SLICE_X85Y69.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N51 : SLICE_X106Y103.
+
+
+The following Nets were re-routed.
+----------------------------------
+ nf2_core/user_data_path/minifirewall/Mmux_out_data4210.
+ nf2_core/nf2_mdio/state(1).
+ nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0).
+ nf2_core/mac_groups[2].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or000040.
+ N18.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data5410.
+ nf2_core/user_data_path/minifirewall/input_fifo/dout_d1(74).
+ nf2_core/user_data_path/minifirewall/input_fifo/N144.
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(74).
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(74).
+ nf2_core/user_data_path/minifirewall/in_fifo_ctrl(2).
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(52).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data5610.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/rx_pkt_byte_cnt(7).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/rx_pkt_byte_cnt(10).
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(60).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N100.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N106.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_tx_queue/pkt_len_out(7).
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(76).
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(61).
+ nf2_core/user_data_path/minifirewall/input_fifo/dout_d1(77).
+ nf2_core/user_data_path/minifirewall/input_fifo/N138.
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(77).
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(77).
+ nf2_core/user_data_path/minifirewall/in_fifo_ctrl(5).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/rx_pkt_byte_cnt(5).
+ nf2_core/user_data_path/minifirewall/input_fifo/dout_d1(78).
+ nf2_core/user_data_path/minifirewall/input_fifo/N136.
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(78).
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(78).
+ nf2_core/user_data_path/minifirewall/in_fifo_ctrl(6).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/rx_pkt_vld.
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(8).
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(8).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_cnt(1).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_cnt_mux0000(2).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_tx_queue/tx_fifo_data_out(11).
+ nf2_core/sram_reg_wr_data(0).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(71).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(0).
+ nf2_core/sram_reg_wr_data(1).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(1).
+ nf2_core/sram_reg_wr_data(2).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(2).
+ nf2_core/sram_reg_wr_data(3).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(68).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(3).
+ nf2_core/sram_reg_wr_data(4).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(67).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(4).
+ nf2_core/sram_reg_wr_data(5).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(66).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(5).
+ nf2_core/sram_reg_wr_data(6).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(65).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(6).
+ nf2_core/sram_reg_wr_data(7).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(64).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(7).
+ nf2_core/mac_groups[2].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gcx.clkx/rd_pntr_gc_xor0005.
+ nf2_core/mac_groups[2].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gcx.clkx/rd_pntr_gc<0>.
+ nf2_core/sram_reg_wr_data(10).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/rx_fifo_rd_en.
+ nf2_core/sram_reg_wr_data(11).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(50).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(21).
+ nf2_core/sram_reg_wr_data(12).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(49).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(22).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/curr_fwft_st
+ate_FSM_FFd1.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/curr_fwft_st
+ate_FSM_FFd2.
+ nf2_core/sram_reg_wr_data(13).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(48).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(23).
+ nf2_core/sram_reg_wr_data(19).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_f
+b.
+ nf2_core/sram_reg_wr_data(14).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(24).
+ nf2_core/sram_reg_wr_data(20).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(30).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(41).
+ nf2_core/sram_reg_wr_data(21).
+ nf2_core/sram_reg_wr_data(8).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(53).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(18).
+ nf2_core/sram_reg_wr_data(9).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(52).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(19).
+ nf2_core/sram_reg_wr_data(28).
+ nf2_core/sram_reg_wr_data(15).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(36).
+ nf2_core/sram_reg_wr_data(29).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(10).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(61).
+ nf2_core/sram_reg_wr_data(16).
+ nf2_core/sram_reg_wr_data(30).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(9).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(62).
+ nf2_core/sram_reg_wr_data(22).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(17).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(54).
+ nf2_core/sram_reg_wr_data(17).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(8).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(63).
+ nf2_core/sram_reg_wr_data(23).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(55).
+ nf2_core/sram_reg_wr_data(18).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(32).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(39).
+ nf2_core/sram_reg_wr_data(24).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(15).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(56).
+ nf2_core/sram_reg_wr_data(25).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(14).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(57).
+ nf2_core/sram_reg_wr_data(26).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(13).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2(58).
+ nf2_core/sram_reg_wr_data(27).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/rx_pkt_dropped_bad_delta.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N10.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/rx_pkt_dropped.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/rx_pkt_dropped_bad_delta_mux0000.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gcx.clkx/rd_pntr_bin<7>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gcx.clkx/wr_pntr_gc_xor0006.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gcx.clkx/wr_pntr_gc<2>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/tx_num_overruns_delta(2).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/Mcount_tx_num_overruns_delta6.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/tx_num_overruns_delta(3).
+ nf2_core/user_data_path/minifirewall/word1(6).
+ nf2_core/user_data_path/minifirewall/word1_next(6).
+ nf2_core/in_data(6)(34).
+ nf2_core/user_data_path/output_queues/generic_regs_a/software_regs(9).
+ nf2_core/user_data_path/output_queues/generic_regs_a/.generic_sw_regs/reg_data_out_mux0000(9).
+ nf2_core/user_data_path/output_queues/generic_regs_a/sw_reg_data_out(9).
+ N87.
+ N123.
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data_mux0000(10).
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data(10).
+ N74.
+ N110.
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data(23).
+ N73.
+ N109.
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data_mux0000(24).
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data(24).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/rx_num_underruns_delta(2).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/Mcount_rx_num_underruns_delta6.
+ nf2_core/cpu_q_dma_rd_data(1)(14).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/rx_num_underruns_delta(3).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/rx_num_underruns_delta(3).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/rx_num_underruns_delta(4).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N25.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/Mcount_rx_num_underruns_delta12.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt(0).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_mux0000(4).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/mac_grp_reg_rd_data_mux0000(6).
+ nf2_core/core_256kb_0_reg_rd_data(262).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N51.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N51.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/rx_num_underruns_delta(2).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N51.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N51.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(2)47.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N671.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(2)47.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N671.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt(1).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(2)47.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N671.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(2)47.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N671.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(3)47.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(3)47.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(3)47.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/tx_num_overruns_delta(3).
+ nf2_core/cpu_q_dma_rd_data(1)(15).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/tx_num_overruns_delta(3).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/rx_num_underruns_delta(3).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/tx_num_overruns_delta(3).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/rx_num_underruns_delta(3).
+ nf2_core/core_256kb_0_reg_wr_data(286).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(4)47.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N71.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(4)47.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N71.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(4)47.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N71.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(4)47.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N71.
+ nf2_core/cpu_q_dma_rd_data(3)(31).
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/rx_byte_cnt_delta_not0001.
+ nf2_core/cpu_q_dma_rd_data(0)(16).
+ nf2_core/mac_groups[3].nf2_mac_grp/tx_queue/tx_pkt_sent_sync/ackB_d1.
+ nf2_core/cpu_q_dma_rd_data(1)(16).
+ nf2_core/user_data_path/op_lut_in_ctrl(3).
+ nf2_core/user_data_path/op_lut_in_ctrl(7).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_tx_queue/tx_fifo_data_out(25).
+ nf2_core/cpu_q_dma_rd_data(2)(25).
+ nf2_core/cpu_q_dma_rd_data(1)(26).
+ nf2_core/user_data_path/minifirewall/out_wr_cmp_eq0000.
+ nf2_core/nf2_dma/nf2_dma_bus_fsm/N7.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data155.
+ nf2_core/cpu_q_dma_rd_data(1)(27).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early1(36).
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or0000241.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/N6.
+ nf2_core/cpu_q_dma_rd_data(1)(28).
+ nf2_core/sram64.sram_arbiter/sram_we_or0000.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.rd/rpntr/count_d1<0>.
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(11).
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(24).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_cnt(1)2.
+ nf2_core/cpu_q_dma_wr_data(2)(24).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_din(0).
+ nf2_core/user_data_path/output_queues/input_fifo/fifo/depth_not0001.
+ nf2_core/user_data_path/output_port_lookup/in_fifo_nearly_full.
+ nf2_core/user_data_path/minifirewall/in_fifo_empty.
+ nf2_core/nf2_mdio/phy_rd_data(31).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N81.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/tx_num_overruns_delta(1).
+ nf2_core/core_256kb_0_reg_addr(131).
+ nf2_core/user_data_path/minifirewall/N100.
+ nf2_core/user_data_path/minifirewall/N8.
+ nf2_core/user_data_path/minifirewall/out_ctrl(6)28.
+ nf2_core/user_data_path/op_lut_in_ctrl(6).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)150.
+ nf2_core/user_data_path/output_queues/oq_header_parser/N01.
+ nf2_core/user_data_path/output_queues/oq_header_parser/input_state_next(0)1336.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)186.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)186.
+ nf2_core/user_data_path/minifirewall/word1(22).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data1610.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data2610.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/N48.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/N54.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/N19.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N48.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N54.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N19.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/N48.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/N19.
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/N48.
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/N19.
+ nf2_core/sram64.sram_arbiter/sram_bw_mux0000(7)1.
+ nf2_core/mac_groups[0].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or000040.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or000040.
+ nf2_core/mac_groups[3].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or000040.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N98.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gcx.clkx/wr_pntr_bin<3>.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gcx.clkx/wr_pntr_bin<2>.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.rd/gras.rsts/ram_empty_fb_i_or0000110.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gcx.clkx/wr_pntr_bin<1>.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gcx.clkx/wr_pntr_bin<5>.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.rd/gras.rsts/ram_empty_fb_i_or0000214.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.rd/gras.rsts/ram_empty_fb_i_or0000145.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/prog_ful
+l_i_mux000313.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/diff_pnt
+r_pad<7>.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/diff_pnt
+r_pad<8>.
+ nf2_core/user_data_path/oq_in_data(34).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/prog_ful
+l_i_mux000313.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/diff_pnt
+r_pad<7>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/diff_pnt
+r_pad<8>.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/prog_ful
+l_i_mux000313.
+ nf2_core/user_data_path/oq_in_data(32).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/prog_ful
+l_i_mux000313.
+ nf2_core/sram64.sram_arbiter/sram_bw_mux0000(4)1.
+ nf2_core/user_data_path/oq_in_data(4).
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/N141.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/N44.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N44.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/N44.
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/N44.
+ nf2_core/cpu_q_dma_rd(2).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gcx.clkx/rd_pntr_gc_asreg<3>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gcx.clkx/rd_pntr_gc_asreg_d1<
+3>.
+ nf2_core/mac_groups[0].nf2_mac_grp/gig_eth_mac/mac_tx/tx_state_FSM_FFd9.
+ nf2_core/mac_groups[0].nf2_mac_grp/gig_eth_mac/mac_tx/tx_state_FSM_FFd9-In48.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.rd/gras.rsts/ram_empty_fb_i_or000040.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gcx.clkx/wr_pntr_bin<0>.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.rd/gras.rsts/ram_empty_fb_i_or000080.
+ nf2_core/in_wr(2).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(31).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(0).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(31).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(0).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_in(31).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_addr(2).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(30).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(28).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(2).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(28).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(2).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(27).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(3).
+ nf2_core/in_data(6)(0).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_in(27).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_in(29).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_in(4).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_out(29).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_out(4).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(29).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(4).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(29).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(4).
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/reg_file_in(4).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_in(25).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(25).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(5).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(25).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(5).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_out(25).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(24).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(6).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(24).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(6).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_in(7).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(26).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_in(26).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_in(7).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_in(22).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_in(8).
+ nf2_core/in_data(3)(33).
+ nf2_core/user_data_path/input_arbiter/fifo_out_data(5)(32).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N96.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N96.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N96.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N96.
+ nf2_core/user_data_path/op_lut_in_data(20).
+ nf2_core/user_data_path/op_lut_in_wr.
+ nf2_core/user_data_path/oq_in_data(20).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_0(1).
+ nf2_core/mac_groups[0].nf2_mac_grp/gig_eth_mac/mac_tx/N3.
+ nf2_core/core_256kb_0_reg_req(8).
+ nf2_core/core_256kb_0_reg_wr_data(354).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_tx_queue/pkt_len_out(1).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/rx_pkt_byte_cnt(1).
+ nf2_core/user_data_path/output_queues/data_count_oq(0)(5).
+ nf2_core/mac_groups[0].nf2_mac_grp/gig_eth_mac/mac_tx/tx_state_FSM_FFd9-In27.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/rx_pkt_byte_cnt(2).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_almost_f
+ull_i_not0001.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_tx_queue/pkt_len_rd.
+ nf2_core/core_reg_wr_data(1).
+ nf2_core/core_reg_wr_data(4).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_dout(0).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N104.
+ nf2_core/nf2_dma/nf2_dma_que_intfc/queue_id(0).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N108.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N108.
+ nf2_core/user_data_path/minifirewall/input_fifo/N108.
+ nf2_core/user_data_path/minifirewall/dst_port(9).
+ nf2_core/user_data_path/minifirewall/num_TCP_next_and0000.
+ nf2_core/user_data_path/minifirewall/in_fifo_ctrl(7).
+ nf2_core/user_data_path/minifirewall/input_fifo/dout_d1(79).
+ nf2_core/user_data_path/minifirewall/input_fifo/N134.
+ nf2_core/user_data_path/minifirewall/out_wr_cmp_eq000025.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/comp3.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N100.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N100.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/Mmux_reg_data_out_mux000045.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N18.
+ nf2_core/core_256kb_0_reg_rd_wr_L(14).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/addr_good12.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/Mmux_reg_data_out_mux00002150.
+ nf2_core/sram64.sram_arbiter/rd_0_data(10).
+ nf2_core/nf2_dma/nf2_dma_regs/ingress_byte_cnt_delta(1).
+ N75.
+ nf2_core/sram64.sram_arbiter/rd_0_data(23).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/N02.
+ N79.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N106.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N106.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N106.
+ nf2_core/sram64.sram_arbiter/rd_0_data(46).
+ N111.
+ nf2_core/mac_groups[3].nf2_mac_grp/rx_queue/rx_fifo_dout(24).
+ nf2_core/mac_groups[3].nf2_mac_grp/rx_queue/out_data_local(22).
+ nf2_core/in_data(6)(22).
+ nf2_core/sram64.sram_arbiter/rd_0_data(62).
+ N115.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/rx_pkt_byte_cnt_and0000.
+ nf2_core/in_data(6)(26).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N102.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N102.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N2.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N102.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data485.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(5)51_SW0_1.
+ nf2_core/mac_groups[3].nf2_mac_grp/rx_queue/rx_fifo_dout(32).
+ nf2_core/core_256kb_0_reg_wr_data(470).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(6)51_SW0_1.
+ N88.
+ nf2_core/core_256kb_0_reg_wr_data(472).
+ nf2_core/user_data_path/minifirewall/input_fifo/depth(0).
+ nf2_core/user_data_path/minifirewall/in_fifo_rd_en.
+ nf2_core/user_data_path/minifirewall/input_fifo/Result(2)_bdd0.
+ nf2_core/user_data_path/minifirewall/input_fifo/dout_sel_cmp_eq00011.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N98.
+ nf2_core/nf2_dma/sys_txfifo_rd_inc.
+ nf2_core/cpu_q_dma_wr_data(2)(9).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/N30.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_in(21).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_in(9).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_out(21).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_out(9).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/N301.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(9).
+ nf2_core/mac_groups[0].nf2_mac_grp/gig_eth_mac/mac_tx/N23.
+ nf2_core/mac_groups[0].nf2_mac_grp/gig_eth_mac/mac_tx/tx_state_cmp_eq0019.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/rx_fifo_dout(52).
+ nf2_core/mac_groups[3].nf2_mac_grp/rx_queue/rx_fifo_dout(60).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_din(2).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_din(16).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/dout_mem<2>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/dout_mem<11>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/dout_mem<15>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/dout_mem<36>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/dout_mem<37>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/dout_mem<38>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/dout_mem<42>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/dout_mem<47>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/dout_mem<48>.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/tmp_ram_rd_en.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/dout_mem<52>.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_tx_queue/cpu_fifos64.tx_fifo/BU2/U0/grf.rf/mem/dout_mem<2>.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_tx_queue/cpu_fifos64.tx_fifo/BU2/U0/grf.rf/mem/dout_mem<3>.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_tx_queue/cpu_fifos64.tx_fifo/BU2/U0/grf.rf/mem/dout_mem<5>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_tx_queue/cpu_fifos64.tx_fifo/BU2/U0/grf.rf/mem/dout_mem<11>.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_tx_queue/cpu_fifos64.tx_fifo/BU2/U0/grf.rf/mem/tmp_ram_rd_en.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_dout(38).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(18).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(19).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(18).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(19).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(20).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(11).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(20).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(11).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/N281.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_din(18).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_din(19).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/dout_mem<70>.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/mem/dout_mem<27>.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_din(32).
+ nf2_core/user_data_path/minifirewall_in_data(5).
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(2).
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(7).
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(15).
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(16).
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(19).
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(28).
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(30).
+ nf2_core/user_data_path/minifirewall_in_data(43).
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(47).
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(56).
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(75).
+ nf2_core/user_data_path/minifirewall/input_fifo/queue_rd(79).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_tx_queue/cpu_fifos64.tx_fifo/BU2/U0/grf.rf/mem/dout_mem<22>.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in(12).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_tx_queue/cpu_fifos64.tx_fifo/BU2/U0/grf.rf/mem/dout_mem<26>.
+ nf2_core/out_data(7)(47).
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/reg_file_in(12).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_out(15).
+ nf2_core/out_data(0)(33).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_tx_queue/N10.
+ nf2_core/out_data(6)(46).
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/rx_fifo_dout(64).
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/rx_fifo_dout(54).
+ nf2_core/user_data_path/oq_in_data(15).
+ nf2_core/user_data_path/oq_in_data(16).
+ nf2_core/user_data_path/oq_in_data(17).
+ nf2_core/user_data_path/oq_in_data(18).
+ nf2_core/user_data_path/oq_in_data(23).
+ nf2_core/user_data_path/oq_in_data(27).
+ nf2_core/user_data_path/oq_in_data(42).
+ nf2_core/user_data_path/oq_in_data(47).
+ nf2_core/user_data_path/oq_in_data(49).
+ nf2_core/user_data_path/oq_in_data(51).
+ nf2_core/user_data_path/oq_in_data(52).
+ nf2_core/user_data_path/oq_in_data(54).
+ nf2_core/user_data_path/oq_in_data(55).
+ nf2_core/user_data_path/oq_in_data(57).
+ nf2_core/user_data_path/oq_in_data(60).
+ nf2_core/user_data_path/oq_in_data(61).
+ nf2_core/user_data_path/oq_in_data(63).
+ nf2_core/user_data_path/output_queues/input_fifo_ctrl_out(0).
+ nf2_core/user_data_path/output_queues/input_fifo_ctrl_out(2).
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/gmac_rx_data_d1(3).
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/rx_fifo_dout(21).
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/rx_fifo_dout(22).
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/rx_fifo_dout(13).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N46.
+ nf2_core/user_data_path/output_queues/data_count_oq(0)(7).
+ nf2_core/user_data_path/output_queues/N0.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N43.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N43.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N43.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N43.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N591.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N591.
+ nf2_core/user_data_path/op_lut_in_ctrl(0).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N591.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N591.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N611.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N611.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N611.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N611.
+ nf2_core/user_data_path/output_port_lookup/input_fifo/depth(0).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data1128_2.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data115.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data1110.
+ nf2_core/user_data_path/op_lut_in_data(18).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/depth_not0001.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/control_reg(6).
+ nf2_core/cpu_q_dma_rd_data(2)(14).
+ nf2_core/cpu_q_dma_rd_data(3)(14).
+ nf2_core/cpu_q_dma_rd_data(2)(15).
+ nf2_core/cpu_q_dma_rd_data(3)(16).
+ nf2_core/cpu_q_dma_rd_data(2)(17).
+ nf2_core/cpu_q_dma_rd_data(0)(17).
+ nf2_core/cpu_q_dma_rd_data(3)(19).
+ nf2_core/cpu_q_dma_rd_data(3)(20).
+ nf2_core/cpu_q_dma_rd_data(0)(21).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data3328_2.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data335.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data3310.
+ nf2_core/user_data_path/op_lut_in_data(38).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data4228_2.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data425.
+ nf2_core/user_data_path/op_lut_in_data(46).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data5128_2.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data515.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data5110.
+ nf2_core/user_data_path/op_lut_in_data(54).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_1(49).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/Mmux_reg_data_out_mux00001422.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_1(39).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data5328_2.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data535.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data5310.
+ nf2_core/user_data_path/op_lut_in_data(56).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/Mmux_reg_data_out_mux00002322.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data6128_2.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data615.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data6110.
+ nf2_core/user_data_path/op_lut_in_data(63).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/Mmux_reg_data_out_mux00003122.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_1(44).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data2928_2.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data295.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data2910.
+ nf2_core/user_data_path/op_lut_in_data(34).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/Mmux_reg_data_out_mux00001622.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_1(53).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data5428_2.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data545.
+ nf2_core/user_data_path/op_lut_in_data(57).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_1(62).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_0(57).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_1(25).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data475.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data4710.
+ nf2_core/user_data_path/op_lut_in_data(50).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_0(6).
+ nf2_core/user_data_path/op_lut_in_data(43).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_0(22).
+ nf2_core/cpu_q_dma_rd_data(1)(22).
+ nf2_core/cpu_q_dma_rd_data(0)(24).
+ nf2_core/cpu_q_dma_rd_data(3)(28).
+ nf2_core/cpu_q_dma_rd_data(2)(29).
+ nf2_core/cpu_q_dma_rd_data(3)(29).
+ nf2_core/cpu_q_dma_rd_data(1)(29).
+ nf2_core/cpu_q_dma_rd_data(2)(30).
+ nf2_core/cpu_q_dma_rd_data(3)(30).
+ nf2_core/cpu_q_dma_rd_data(0)(31).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/N30.
+ nf2_core/user_data_path/minifirewall/N109.
+ nf2_core/user_data_path/minifirewall/out_ctrl(2)28.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_dout(16).
+ nf2_core/user_data_path/minifirewall/out_ctrl(4)28.
+ nf2_core/user_data_path/minifirewall/out_wr_cmp_eq000012.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N73.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N73.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)132.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N73.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)132.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N73.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_1(20).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_0(20).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_1(29).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_0(29).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_0(8).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N20.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_1(22).
+ nf2_core/mac_groups[0].nf2_mac_grp/rx_pkt_word_cnt(8).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/Mmux_reg_data_out_mux0000722.
+ nf2_core/cpu_q_dma_rd_data(2)(12).
+ nf2_core/cpu_q_dma_rd_data(3)(12).
+ nf2_core/cpu_q_dma_rd_data(0)(12).
+ nf2_core/cpu_q_dma_wr_data(0)(8).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_dout(18).
+ nf2_core/user_data_path/minifirewall/input_fifo/Result(2)_bdd1.
+ nf2_core/user_data_path/minifirewall/input_fifo/depth(3).
+ nf2_core/user_data_path/minifirewall/input_fifo/depth(2).
+ nf2_core/user_data_path/minifirewall/input_fifo/depth(1).
+ nf2_core/user_data_path/minifirewall/input_fifo/Result(3).
+ nf2_core/nf2_mdio/state_nxt(1).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_0(39).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/ram_rd_en.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_0(37).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_ctrl_0(5).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/Mmux_reg_data_out_mux00002858.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/N281.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gcx.clkx/wr_pntr_gc<7>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/N281.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/N281.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/Mmux__old_delta_91_3_f5.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/Mmux__old_delta_91_4_f5.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gcx.clkx/wr_pntr_gc<8>.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.rd/gras.rsts/ram_empty_fb
+_i.
+ nf2_core/user_data_path/output_queues/bram_oq[0].oq/BU2/U0/grf.rf/gl0.wr/wpntr/count<1>.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data495.
+ nf2_core/user_data_path/op_lut_in_data(52).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_1(14).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/last_pkt_data_0(14).
+ nf2_core/user_data_path/op_lut_in_data(60).
+ nf2_core/cpu_q_dma_rd_data(3)(2).
+ nf2_core/cpu_q_dma_rd_data(1)(2).
+ nf2_core/cpu_q_dma_rd_data(3)(3).
+ nf2_core/cpu_q_dma_rd_data(0)(3).
+ nf2_core/cpu_q_dma_rd_data(2)(5).
+ nf2_core/cpu_q_dma_rd_data(1)(7).
+ nf2_core/cpu_q_dma_rd_data(3)(8).
+ nf2_core/cpu_q_dma_rd_data(0)(8).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data5928_2.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data595.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data5910.
+ nf2_core/user_data_path/op_lut_in_data(61).
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data_mux0000(22).
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data(22).
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data_mux0000(18).
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data(18).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data7101.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or0000214.
+ nf2_core/sram64.sram_arbiter/sram_addr1_addsub0000(13).
+ nf2_core/sram64.sram_arbiter/sram_tri_en_early2.
+ nf2_core/user_data_path/minifirewall/word3(26).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/prog_ful
+l_i_not0001.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gcx.clkx/wr_pntr_gc<6>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_addr(4).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_addr(0).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_addr(1).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(19).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(28).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(17).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(31).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(4).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(27).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_addr(0).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_addr(3).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(1).
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/rx_pkt_good_sync/ackB_clkA.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(4).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(19).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(19).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/Mram_reg_file20/A4'.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(20).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(20).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/Mram_reg_file21/A4'.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(30).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(30).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/Mram_reg_file31/A4'.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(28).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(12).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(12).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/Mram_reg_file13/A4'.
+ nf2_core/user_data_path/output_queues/write_state_nxt_0_cmp_eq000012.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(21).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(21).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/Mram_reg_file22/A4'.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(24).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(24).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/Mram_reg_file25/A4'.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(13).
+ nf2_core/user_data_path/minifirewall/N211.
+ nf2_core/user_data_path/minifirewall/word_saved_next(2)1110.
+ nf2_core/nf2_mdio/phy_reg_rd_data_mux0000(14)12.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(29).
+ nf2_core/user_data_path/minifirewall/word4(79).
+ nf2_core/user_data_path/minifirewall/out_ctrl(7)19.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(31).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(31).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/Mram_reg_file32/A4'.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(22).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(15).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(15).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/Mram_reg_file16/A4'.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(23).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(23).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/Mram_reg_file24/A4'.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(27).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(27).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/Mram_reg_file28/A4'.
+ nf2_core/core_256kb_0_reg_wr_data(453).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(1).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(1).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/Mram_reg_file2/A4'.
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(29).
+ nf2_core/core_256kb_0_reg_rd_data(287).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data105.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(3).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_out(3).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/Mram_reg_file4/A4'.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in(6).
+ nf2_core/nf2_mdio/tri_ctrl(24).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/diff_pnt
+r_pad<9>.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/diff_pnt
+r_pad<6>.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_tx_queue/N24.
+ nf2_core/user_data_path/op_lut_in_data(62).
+ nf2_core/user_data_path/minifirewall/N35.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data95.
+ nf2_core/user_data_path/op_lut_in_data(4).
+ nf2_core/nf2_mdio/cmd_reg(24).
+ nf2_core/user_data_path/output_queues/generic_regs_b/.generic_hw_regs/Mmux_reg_data_out_mux0000_10_f627.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data565.
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(18).
+ nf2_core/user_data_path/minifirewall/out_ctrl(0)8.
+ nf2_core/user_data_path/minifirewall/out_ctrl(0)20.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data345.
+ nf2_core/user_data_path/minifirewall/state_next(3)17.
+ nf2_core/user_data_path/minifirewall/N26.
+ nf2_core/mac_groups[0].nf2_mac_grp/disable_crc_gen.
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(27).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data910.
+ nf2_core/user_data_path/minifirewall/out_ctrl(1)20.
+ nf2_core/user_data_path/minifirewall/word_saved_next(1)331.
+ nf2_core/user_data_path/op_lut_in_data(29).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(8).
+ nf2_core/core_256kb_0_reg_wr_data(340).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/diff_pnt
+r_pad<9>.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N16.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data725.
+ nf2_core/user_data_path/minifirewall/N19.
+ nf2_core/user_data_path/output_queues/Madd_oq_has_space_1_sub0000_Madd.
+ nf2_core/user_data_path/minifirewall/out_ctrl(3)19.
+ nf2_core/user_data_path/output_queues/input_fifo_ctrl_out_prev(4).
+ nf2_core/user_data_path/minifirewall/in_fifo_ctrl(3).
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N14.
+ nf2_core/user_data_path/minifirewall/out_ctrl(6)28_1.
+ nf2_core/mac_groups[1].nf2_mac_grp/tx_pkt_byte_cnt(9).
+ nf2_core/mac_groups[2].nf2_mac_grp/tx_pkt_byte_cnt(9).
+ nf2_core/mac_groups[3].nf2_mac_grp/tx_pkt_byte_cnt(2).
+ nf2_core/mac_groups[3].nf2_mac_grp/tx_pkt_byte_cnt(3).
+ nf2_core/user_data_path/output_queues/data_count_oq(5)(1).
+ nf2_core/core_256kb_0_reg_wr_data(458).
+ nf2_core/core_256kb_0_reg_wr_data(463).
+ nf2_core/user_data_path/output_queues/data_count_oq(5)(6).
+ nf2_core/user_data_path/output_queues/data_count_oq(5)(7).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/control_reg(15).
+ nf2_core/user_data_path/output_queues/Mcompar_oq_has_space(5)_lut(8)_2.
+ nf2_core/core_256kb_0_reg_grp/N6.
+ nf2_core/mac_groups[0].nf2_mac_grp/gig_eth_mac/mac_tx/Mrom_max_data_length10.
+ nf2_core/core_256kb_0_reg_wr_data(359).
+ nf2_core/user_data_path/minifirewall/out_ctrl(5)19.
+ nf2_core/core_256kb_0_reg_wr_data(356).
+ nf2_core/core_256kb_0_reg_wr_data(358).
+ nf2_core/user_data_path/output_queues/rd_dst_oq.
+ nf2_core/nf2_mdio/cmd_reg(16).
+ nf2_core/user_data_path/op_lut_in_data(49).
+ nf2_core/user_data_path/output_queues/bram_oq[3].oq/BU2/U0/grf.rf/gl0.rd/grss.rsts/comp0.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N65.
+ nf2_core/nf2_dma/nf2_dma_regs/reg_file_in_addsub0000(21).
+ nf2_core/user_data_path/output_queues/input_fifo/fifo/Mcount_depth_xor(3)158.
+ nf2_core/user_data_path/output_queues/input_fifo/fifo/Mcount_depth_xor(3)122.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(7).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/_old_delta_91(9)1.
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(57).
+ nf2_core/in_data(6)(39).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(25).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/N46.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(29).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/_old_delta_91(3)1.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/_old_delta_91(5)1.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(4).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/_old_delta_91(6)1.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(6).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(9).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(10).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(15).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(19).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(20).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(22).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(24).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(25).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(26).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(27).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(29).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(30).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(31).
+ nf2_core/core_256kb_0_reg_wr_data(308).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(15).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(22).
+ nf2_core/user_data_path/op_lut_in_data(51).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(26).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(27).
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(73).
+ nf2_core/core_256kb_0_reg_wr_data(343).
+ nf2_core/user_data_path/minifirewall/N7.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/reg_file_in_addsub0000(31).
+ nf2_core/user_data_path/output_port_lookup/N01.
+ nf2_core/user_data_path/output_port_lookup/N4.
+ nf2_core/user_data_path/output_port_lookup/N8.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded(55).
+ nf2_core/user_data_path/output_port_lookup/in_data_modded(51).
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/out_wr_local.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(7)48.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N98.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N108.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(6)48.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data3410.
+ nf2_core/user_data_path/minifirewall/input_fifo/Result(1).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N631.
+ nf2_core/user_data_path/minifirewall/N13.
+ nf2_core/user_data_path/minifirewall/N15.
+ nf2_core/user_data_path/output_port_lookup/N9.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N70.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(2)2.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(6)48.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(7)48.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(6).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N631.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N65.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(12).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N104.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(27).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(28).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(31).
+ nf2_core/user_data_path/minifirewall/Mmux_out_data5628_2.
+ nf2_core/user_data_path/op_lut_in_data(59).
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(75).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(2)2.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(3)2.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(4).
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(79).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N411.
+ nf2_core/user_data_path/minifirewall/input_fifo/dout_d1(75).
+ nf2_core/user_data_path/minifirewall/input_fifo/N142.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(8)48.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N631.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N351.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N65.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(13).
+ nf2_core/in_data(2)(53).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(15).
+ nf2_core/in_data(2)(42).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(19).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(20).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(21).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(22).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(24).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(28).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(29).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(30).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_file_in_addsub0000(31).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(0).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(3)2.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N631.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N65.
+ nf2_core/user_data_path/op_lut_in_data(32).
+ nf2_core/user_data_path/op_lut_in_data(42).
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/out_ctrl_local(0).
+ nf2_core/in_ctrl(2)(0).
+ nf2_core/user_data_path/output_port_lookup/in_data_modded(61).
+ nf2_core/user_data_path/output_port_lookup/N3.
+ nf2_core/in_data(2)(27).
+ nf2_core/in_data(2)(45).
+ nf2_core/in_data(2)(50).
+ nf2_core/user_data_path/output_port_lookup/N10.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded(49).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/curr_fwft_st
+ate_FSM_FFd2-In.
+ nf2_core/user_data_path/output_port_lookup/N7.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded(50).
+ nf2_core/user_data_path/output_port_lookup/in_data_modded(54).
+ nf2_core/user_data_path/output_port_lookup/N5.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded(52).
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/out_data_local(48).
+ nf2_core/in_data(2)(48).
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/out_data_local(57).
+ nf2_core/in_data(2)(57).
+ nf2_core/in_data(2)(28).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N100.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/curr_fwft_st
+ate_FSM_FFd1-In.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded(60).
+ nf2_core/core_4mb_reg_wr_data(36).
+ nf2_core/user_data_path/output_queues/bram_oq[6].oq/BU2/U0/grf.rf/gl0.rd/ram_rd_en_i1.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data3428_2.
+ nf2_core/user_data_path/op_lut_in_data(39).
+ nf2_core/user_data_path/output_queues/data_count_oq(5)(3).
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/out_data_local(47).
+ nf2_core/in_data(2)(47).
+ nf2_core/user_data_path/output_queues/bram_oq[0].oq/BU2/U0/grf.rf/gl0.rd/ram_rd_en_i1.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/diff_pnt
+r_pad<10>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/diff_pnt
+r_pad<10>.
+ nf2_core/nf2_reg_grp_u/N44.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/diff_pnt
+r_pad<10>.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/diff_pnt
+r_pad<10>.
+ nf2_core/core_256kb_0_reg_rd_data(462).
+ nf2_core/core_4mb_reg_wr_data(33).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/control_reg(27).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/Mcount_rx_num_underruns_delta9.
+ nf2_core/core_256kb_0_reg_rd_data(417).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/control_reg(5).
+ nf2_core/core_256kb_0_reg_rd_data(454).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/control_reg(7).
+ nf2_core/cpu_q_dma_wr_data(2)(15).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/control_reg(9).
+ nf2_core/core_reg_wr_data(9).
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/N30.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_mux0000(3).
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/mac_grp_reg_rd_data_mux0000(1).
+ nf2_core/core_256kb_0_reg_rd_data(353).
+ nf2_core/user_data_path/output_queues/generic_regs_b/cntr_reg_data_out(10).
+ nf2_core/mac_groups[0].nf2_mac_grp/tx_pkt_word_cnt(0).
+ nf2_core/mac_groups[0].nf2_mac_grp/tx_pkt_word_cnt(8).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_tx_queue/cpu_fifos64.tx_fifo/BU2/U0/grf.rf/gl0.rd/gr1.rfwft/empty_fwft_f
+b.
+ nf2_core/mac_groups[2].nf2_mac_grp/tx_pkt_word_cnt(5).
+ nf2_core/cpu_q_dma_wr_data(2)(30).
+ nf2_core/cpu_q_dma_wr_data(2)(31).
+ nf2_core/cpu_q_dma_wr_data(3)(23).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N1.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_pkt_byte_cnt(2).
+ nf2_core/mac_groups[2].nf2_mac_grp/rx_pkt_byte_cnt(8).
+ nf2_core/core_256kb_0_reg_wr_data(461).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N61.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_tx_queue/N18.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_tx_queue/tx_fifo_data_out(6).
+ nf2_core/core_256kb_0_reg_wr_data(475).
+ nf2_core/core_256kb_0_reg_wr_data(467).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/control_reg(19).
+ nf2_core/core_256kb_0_reg_wr_data(471).
+ nf2_core/core_256kb_0_reg_wr_data(473).
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/mac_grp_reg_rd_data_mux0000(3).
+ nf2_core/core_256kb_0_reg_rd_data(355).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N104.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N104.
+ nf2_core/core_256kb_0_reg_wr_data(284).
+ nf2_core/core_256kb_0_reg_addr(225).
+ nf2_core/core_256kb_0_reg_wr_data(317).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/Mmux_reg_rd_data_mux0000101_2.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/control_reg(10).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/control_reg(13).
+ nf2_core/core_256kb_0_reg_wr_data(347).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/Mcount_rx_num_underruns_delta6.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64_rx_fifo_dout(4).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(6)51_SW0_1.
+ nf2_core/nf2_dma/nf2_dma_que_intfc/cpu_q_dma_wr_data_nxt(2)(15).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(6)17.
+ nf2_core/cpu_q_dma_wr_data(1)(16).
+ nf2_core/nf2_dma/nf2_dma_que_intfc/cpu_q_dma_wr_data_nxt(1)(16).
+ nf2_core/nf2_dma/nf2_dma_que_intfc/cpu_q_dma_wr_data_nxt(2)(30).
+ nf2_core/user_data_path/output_queues/bram_oq[0].oq/BU2/U0/grf.rf/gl0.wr/wpntr/count<0>.
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(41).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N8.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N82.
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(49).
+ nf2_core/user_data_path/minifirewall/input_fifo/din_d1(58).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N98.
+ nf2_core/core_256kb_0_reg_rd_data(296).
+ nf2_core/cpu_q_dma_wr_data(1)(13).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N30.
+ nf2_core/core_256kb_0_reg_rd_data(41).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N108.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N57.
+ nf2_core/core_256kb_0_reg_wr_data(313).
+ nf2_core/core_256kb_0_reg_addr(137).
+ nf2_core/core_256kb_0_reg_addr(136).
+ nf2_core/core_256kb_0_reg_addr(135).
+ nf2_core/user_data_path/output_queues/rd_dst_oq9.
+ nf2_core/core_256kb_0_reg_wr_data(298).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/addr_good49.
+ nf2_core/core_256kb_0_reg_wr_data(297).
+ nf2_core/core_256kb_0_reg_wr_data(318).
+ nf2_core/core_256kb_0_reg_wr_data(306).
+ nf2_core/core_256kb_0_reg_wr_data(319).
+ nf2_core/core_256kb_0_reg_wr_data(315).
+ nf2_core/core_256kb_0_reg_wr_data(311).
+ nf2_core/core_256kb_0_reg_wr_data(314).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/mac_grp_reg_rd_data_mux0000(1).
+ nf2_core/core_256kb_0_reg_rd_data(289).
+ nf2_core/user_data_path/output_queues/rd_dst_oq4.
+ nf2_core/core_256kb_0_reg_rd_data(442).
+ nf2_core/core_256kb_0_reg_rd_data(264).
+ nf2_core/nf2_dma/nf2_dma_que_intfc/cpu_q_dma_wr_data_nxt(2)(9).
+ nf2_core/nf2_dma/nf2_dma_que_intfc/queue_id_nxt(0).
+ nf2_core/core_256kb_0_reg_wr_data(300).
+ nf2_core/core_256kb_0_reg_wr_data(301).
+ nf2_core/core_256kb_0_reg_wr_data(316).
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_rd_data_mux0000(0).
+ nf2_core/core_256kb_0_reg_rd_data(448).
+ nf2_core/core_256kb_0_reg_wr_data(307).
+ nf2_core/user_data_path/minifirewall/input_fifo/Result(2).
+ nf2_core/core_256kb_0_reg_wr_data(312).
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/mac_grp_reg_rd_data_mux0000(8).
+ nf2_core/user_data_path/output_queues/input_fifo_ctrl_out_prev(0).
+ nf2_core/user_data_path/output_queues/input_fifo_ctrl_out_prev(1).
+ nf2_core/user_data_path/output_queues/input_fifo_ctrl_out_prev(2).
+ nf2_core/user_data_path/output_queues/input_fifo_ctrl_out_prev(3).
+ nf2_core/user_data_path/input_arbiter/fifo_out_data(2)(12).
+ nf2_core/user_data_path/input_arbiter/fifo_out_data(4)(16).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gcx.clkx/wr_pntr_gc<6>.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/local_pkt_removed.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N29.
+ nf2_core/core_256kb_0_reg_wr_data(285).
+ nf2_core/user_data_path/output_port_lookup/in_data_modded_48_mux0000111.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded(63).
+ nf2_core/user_data_path/input_arbiter/fifo_out_data(6)(25).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/control_reg(2).
+ nf2_core/core_256kb_0_reg_wr_data(277).
+ nf2_core/core_256kb_0_reg_wr_data(274).
+ nf2_core/core_256kb_0_reg_wr_data(281).
+ nf2_core/core_256kb_0_reg_wr_data(278).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(6)51_SW0_1.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(6)17.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_tx_queue/tx_fifo_data_out(30).
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N102.
+ nf2_core/core_256kb_0_reg_wr_data(329).
+ nf2_core/core_256kb_0_reg_wr_data(330).
+ nf2_core/core_256kb_0_reg_wr_data(351).
+ nf2_core/core_256kb_0_reg_wr_data(344).
+ nf2_core/user_data_path/output_queues/write_state_nxt_0_cmp_eq0000.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_mux0000(1)4.
+ nf2_core/core_256kb_0_reg_wr_data(342).
+ nf2_core/core_256kb_0_reg_wr_data(346).
+ nf2_core/user_data_path/minifirewall/input_fifo/dout_d1(17).
+ nf2_core/user_data_path/minifirewall/input_fifo/N40.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_tx_queue/tx_fifo_data_out(3).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(32).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(63).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(16).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(61).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(49).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(60).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(42).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(55).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(34).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(54).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(18).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(52).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(51).
+ nf2_core/user_data_path/output_port_lookup/input_fifo/_varindex0000(4).
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(0)148.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data1010.
+ nf2_core/user_data_path/minifirewall/Mmux_out_data1028_2.
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(47).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(16).
+ nf2_core/sram64.sram_arbiter/sram_reg_rd_data_mux0000(23).
+ nf2_core/sram64.sram_arbiter/sram_wr_data_early2_mux0000(69).
+ nf2_core/user_data_path/minifirewall/N17.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)186.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)186.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)150.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)150.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gcx.clkx/rd_pntr_bin_xor0000.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)150.
+
+
+The following Nets are new/changed.
+-----------------------------------
+ nf2_core/mac_groups[2].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or000042_2.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N83.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N83.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N80.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N77.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N79.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N79.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N79.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N47.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N811.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N69.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N47.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N811.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N69.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N47.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N811.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N69.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N47.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N811.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N69.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N49.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N49.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N861.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N49.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N861.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N49.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N861.
+ nf2_core/nf2_dma/nf2_dma_bus_fsm/tx_pkt_len_nxt(5)8_2.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded_48_mux0000136_2.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded_48_mux0000138_1.
+ nf2_core/user_data_path/minifirewall/state_next(1)185.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/tx_queue_delta_and0000_2.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/tx_queue_delta_and0000_2.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/tx_queue_delta_and0000_2.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/Eqn_031_2.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/Eqn_031_2.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/Eqn_031_2.
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/Eqn_031_2.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N80.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N80.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N80.
+ nf2_core/user_data_path/minifirewall/word_saved_next(1)323.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/N14.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N14.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/N14.
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/N14.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/N231.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/N231.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/N231.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/N231.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N110.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/N231.
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/N231.
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/N231.
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/N231.
+ nf2_core/user_data_path/minifirewall/state_next(1)150.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N83.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N83.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)162.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)162.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)162.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)162.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)206.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)206.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)206.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/_old_delta_109(1)206.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/_old_delta_91(10).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/_old_delta_91(10).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/_old_delta_91(10).
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/_old_delta_91(10).
+ nf2_core/sram64.sram_arbiter/N01.
+ nf2_core/sram64.sram_arbiter/sram_bw_mux0000(0)1.
+ nf2_core/mac_groups[0].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or000042_2.
+ nf2_core/mac_groups[1].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or000042_2.
+ nf2_core/mac_groups[3].nf2_mac_grp/rx_queue/.pkt_chk_fifo/BU2/U0/grf.rf/gl0.wr/gwas.wsts/ram_full_i_or000042_2.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/prog_ful
+l_i_mux000327_SW0/O.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/prog_ful
+l_i_mux000327_SW0/O.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/prog_ful
+l_i_mux000327_SW0/O.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/cpu_fifos64.rx_fifo/BU2/U0/grf.rf/gl0.wr/gwas.gpf.wrpf/prog_ful
+l_i_mux000327_SW0/O.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_mux0000(0)12_1.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_mux0000(0)12_1.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_mux0000(0)12_1.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_mux0000(0)12_1.
+ nf2_core/mac_groups[0].nf2_mac_grp/mac_grp_regs/_old_delta_91(11).
+ nf2_core/mac_groups[1].nf2_mac_grp/mac_grp_regs/_old_delta_91(11).
+ nf2_core/mac_groups[2].nf2_mac_grp/mac_grp_regs/_old_delta_91(11).
+ nf2_core/mac_groups[3].nf2_mac_grp/mac_grp_regs/_old_delta_91(11).
+ nf2_core/nf2_dma/nf2_dma_que_intfc/N74.
+ nf2_core/nf2_dma/nf2_dma_que_intfc/N75.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N32.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N112.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N112.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N28.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N26.
+ N355.
+ nf2_core/user_data_path/minifirewall/N32.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N110.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N110.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N110.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N112.
+ nf2_core/user_data_path/minifirewall/N30.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N74.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N76.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N77.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N74.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N76.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N74.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N76.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N77.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N74.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N76.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N77.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N30.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N22.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N24.
+ nf2_core/user_data_path/input_arbiter/in_arb_regs/N341.
+ nf2_core/user_data_path/minifirewall/N28.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/cpu_dma_rx_queue/N32.
+ nf2_core/user_data_path/minifirewall/N34.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/cpu_dma_rx_queue/N32.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N114.
+ nf2_core/nf2_dma/nf2_dma_que_intfc/N30.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N114.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N112.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/cpu_dma_rx_queue/N32.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/cpu_dma_rx_queue/N32.
+ nf2_core/cpu_queues[1].cpu_dma_queue_i/.cpu_dma_queue_regs/N114.
+ nf2_core/cpu_queues[3].cpu_dma_queue_i/.cpu_dma_queue_regs/N114.
+ N20.
+ nf2_core/user_data_path/minifirewall/out_ctrl(2)41_REPLICA_0.
+ nf2_core/user_data_path/output_port_lookup/in_data_modded_48_mux0000138_REPLICA_1.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_1_REPLICA_2_lut.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_1_REPLICA_2.
+ nf2_core/user_data_path/minifirewall/state_next(1)175.
+ nf2_core/sram64.sram_arbiter/sram_bw_mux0000(0)1_2.
+ nf2_core/cpu_queues[0].cpu_dma_queue_i/.cpu_dma_queue_regs/N861.
+ nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/N79.

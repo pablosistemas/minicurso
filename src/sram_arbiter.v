@@ -208,7 +208,8 @@ module sram_arbiter  #(parameter SRAM_ADDR_WIDTH = 19,
             if(sram_reg_req) begin
                sram_addr1 <= sram_reg_addr[19:1];
                sram_addr2 <= sram_reg_addr[19:1];
-               sram_wr_data_early2 <= sram_reg_addr[0] ? {12'h0,sram_reg_wr_data,36'h0}:{48'h0,sram_reg_wr_data};
+               //sram_wr_data_early2 <= sram_reg_addr[0] ? {12'h0,sram_reg_wr_data,36'h0}:{48'h0,sram_reg_wr_data};
+               sram_wr_data_early2 <= {8'h0,sram_reg_wr_data[31:22],11'h0,sram_reg_wr_data[31:22],11'h0,sram_reg_wr_data[21:15],11'h0,sram_reg_wr_data[14:8],10'h0,sram_reg_wr_data[7:0]};
                sram_tri_en_early2 <= !sram_reg_rd_wr_L && sram_reg_req;
                if(!sram_reg_rd_wr_L) begin
                   sram_bw <= sram_reg_addr[0] ? 8'h0f : 8'hf0;

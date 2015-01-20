@@ -36,7 +36,6 @@
     </nf:group>
     <nf:group name="udp">
       <nf:instance name="in_arb"/>
-      <nf:instance name="simulacao" />
       <nf:instance name="bram_output_queues" />
     </nf:group>
   </nf:memalloc>

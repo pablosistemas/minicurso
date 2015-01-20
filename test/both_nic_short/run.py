@@ -2,7 +2,8 @@
 
 from NFTest import *
 from NFTest import simReg
-import time
+from scapy.all import *
+
 #from /root/netfpga/lib/python/NFTest/simReg import regDelay
 
 phy2loop0 = ('../connections/conn', [])
@@ -17,13 +18,13 @@ nftest_start()
 #simReg.regDelay(20000000)
 #time.sleep(60)
 
-hdr=scapy.TCP()
+hdr=TCP()
 TTL = 64
 
 port1 = 80
 port2 = 1010
 #The num_pkts set here must be changed in simulacao.v(line 1054), too
-NUM_PKTS = 25
+NUM_PKTS = 5
 
 eth_hdr=14
 ipv4_hdr=20
@@ -53,35 +54,36 @@ nftest_barrier()
 #add recently
 for iter in range(1):
    for i in range(NUM_PKTS):
-      hdr.dport=port1*(i+1)
-      hdr.sport=port2*(i+2)
+      hdr.dport=port1+(i+1)
+      hdr.sport=port2+(i+2)
       hdr.flags = 0b00010
       '''DA = "0xD0:0x27:0x88:0xBC:0xA8:0x%02x"%(i)
       SA = "0x0:0x4E:0x46:0x32:0x43:0x%02x"%(i)'''
       DST_IP = '192.168.101.%0.3i'%(i)
       SRC_IP = '192.168.101.%0.3i'%(i+1)
-      pkt = scapy.Ether(dst=DA, src=SA)/scapy.IP(dst=DST_IP, 
+      pkt = Ether(dst=DA, src=SA)/IP(dst=DST_IP, 
             src=SRC_IP, ttl=TTL)/hdr/load
       pkt.len = (len(load))+eth_hdr+ipv4_hdr+tcp_hdr
       #seqn = i*(pkt.len+1)
       seqn = i*(50)
       pkt.seq = seqn 
-      print "len_packet %d"%(pkt.len)
-      print "sequencenum %d"%(seqn)
+      #print "len_packet %d"%(pkt.len)
+      #print "sequencenum %d"%(seqn)
+      print "PORTS %d, %d"%(pkt.dport,pkt.sport)
 
       nftest_send_phy('nf2c0', pkt)
-      #nftest_expect_dma('nf2c0', pkt)
+      nftest_expect_dma('nf2c0', pkt)
 
    #ACK+DATA
    for i in range(NUM_PKTS):
-      hdr.dport=port2*(i+2)
-      hdr.sport=port1*(i+1)
+      hdr.dport=port2+(i+2)
+      hdr.sport=port1+(i+1)
       hdr.flags = 0b10010
       '''DA = "0xD0:0x27:0x88:0xBC:0xA8:0x%02x"%(i)
       SA = "0x0:0x4E:0x46:0x32:0x43:0x%02x"%(i)'''
       DST_IP = '192.168.101.%0.3i'%(i)
       SRC_IP = '192.168.101.%0.3i'%(i+1)
-      pkt = scapy.Ether(dst=SA, src=DA)/scapy.IP(dst=SRC_IP,
+      pkt = Ether(dst=SA, src=DA)/IP(dst=SRC_IP,
              src=DST_IP, ttl=TTL)/hdr/load
       pkt.len = (len(load))+eth_hdr+ipv4_hdr+tcp_hdr
       #seqn = (i+1)*(pkt.len+1)
@@ -89,10 +91,11 @@ for iter in range(1):
       #pkt.ack = seqn+pkt.len+1
       #pkt.ack = (i+1)*(pkt.len+1)
       pkt.ack = (i)*(50)+pkt.len+1
-      print "len_packet %d"%(pkt.len)
-      print "acknum %d"%(pkt.ack)
+      #print "len_packet %d"%(pkt.len)
+      #print "acknum %d"%(pkt.ack)
+      print "PORTS %d, %d"%(pkt.dport,pkt.sport)
 
       nftest_send_phy('nf2c0', pkt)
-      #nftest_expect_dma('nf2c0', pkt)
+      nftest_expect_dma('nf2c0', pkt)
 
 nftest_finish()

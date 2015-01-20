@@ -937,8 +937,8 @@ module nf2_core #(
       .MINOR      (1),
       .REVISION   (2),
       .PROJ_DIR   ("miniteste"),
-      .PROJ_NAME  ("novo_reference_nic"),
-      .PROJ_DESC  ("novo reference nic")
+      .PROJ_NAME  ("MINIFIREWALL"),
+      .PROJ_DESC  ("Firewall to parser packets based in TCP port rules")
    )
 `endif
    device_id_reg (

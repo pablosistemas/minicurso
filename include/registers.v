@@ -1,10 +1,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
 // Module: registers.v
-// Project: novo_reference_nic (miniteste)
+// Project: MINIFIREWALL (miniteste)
 // Description: Project specific register defines
 //
-//              novo reference nic
+//              Firewall to parser packets based in TCP port rules
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -17,8 +17,8 @@
 `define DEVICE_MINOR       1
 `define DEVICE_REVISION    2
 `define DEVICE_PROJ_DIR    "miniteste"
-`define DEVICE_PROJ_NAME   "novo_reference_nic"
-`define DEVICE_PROJ_DESC   "novo reference nic"
+`define DEVICE_PROJ_NAME   "MINIFIREWALL"
+`define DEVICE_PROJ_DESC   "Firewall to parser packets based in TCP port rules"
 
 
 // -------------------------------------
@@ -222,8 +222,6 @@
 `define MAC_GRP_REG_ADDR_WIDTH      16
 `define MDIO_BLOCK_ADDR_WIDTH       4
 `define MDIO_REG_ADDR_WIDTH         16
-`define SIMULACAO_BLOCK_ADDR_WIDTH  16
-`define SIMULACAO_REG_ADDR_WIDTH    7
 `define SRAM_BLOCK_ADDR_WIDTH       1
 `define SRAM_REG_ADDR_WIDTH         22
 `define UDP_BLOCK_ADDR_WIDTH        1
@@ -244,9 +242,8 @@
 `define CPU_QUEUE_3_BLOCK_ADDR  4'hf
 `define SRAM_BLOCK_ADDR         1'h1
 `define UDP_BLOCK_ADDR          1'h1
-`define SIMULACAO_BLOCK_ADDR    16'h0000
-`define IN_ARB_BLOCK_ADDR       17'h00002
-`define BRAM_OQ_BLOCK_ADDR      17'h00003
+`define IN_ARB_BLOCK_ADDR       17'h00000
+`define BRAM_OQ_BLOCK_ADDR      17'h00001
 `define DRAM_BLOCK_ADDR         1'h1
 
 
@@ -461,24 +458,6 @@
 `define MAC_GRP_TX_QUEUE_NUM_PKTS_SENT          16'ha
 `define MAC_GRP_TX_QUEUE_NUM_WORDS_PUSHED       16'hb
 `define MAC_GRP_TX_QUEUE_NUM_BYTES_PUSHED       16'hc
-
-// Name: simulacao
-// Description: Registers for simul
-// File: projects/miniteste/include/simulacao.xml
-`define SIMULACAO_RD_1_DATA          7'h0
-`define SIMULACAO_RD_0_DATA          7'h1
-`define SIMULACAO_TUPLE_PSRC_GEN     7'h2
-`define SIMULACAO_TUPLE_PDST_GEN     7'h3
-`define SIMULACAO_TUPLE_IPSRC_GEN    7'h4
-`define SIMULACAO_TUPLE_IPDST_GEN    7'h5
-`define SIMULACAO_TUPLE_ACKNUM_GEN   7'h6
-`define SIMULACAO_NUM_LEITURA_GEN    7'h7
-`define SIMULACAO_NUM_ESCRITA_GEN    7'h8
-`define SIMULACAO_NUM_ACK_PKTS_GEN   7'h9
-`define SIMULACAO_NUM_ICMP_PKTS_GEN  7'ha
-`define SIMULACAO_NUM_UDP_PKTS_GEN   7'hb
-`define SIMULACAO_NUM_TCP_PKTS_GEN   7'hc
-`define SIMULACAO_NUM_PKTS_GEN       7'hd
 
 
 

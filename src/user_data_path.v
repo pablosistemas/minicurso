@@ -359,9 +359,10 @@ module user_data_path
     );
 
     minifirewall #(
-        .DATA_WIDTH(DATA_WIDTH),
+        .DATA_WIDTH(DATA_WIDTH+CTRL_WIDTH),
         .CTRL_WIDTH(CTRL_WIDTH),
         .SRAM_ADDR_WIDTH(SRAM_ADDR_WIDTH),
+        .SRAM_DATA_WIDTH(SRAM_DATA_WIDTH),
         .UDP_REG_SRC_WIDTH (UDP_REG_SRC_WIDTH)
     ) minifirewall (
 

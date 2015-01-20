@@ -69,12 +69,14 @@ void dumpCounts()
   writeReg(&nf2, SIMULACAO_TUPLE_IPSRC_GEN_REG, 0x0);
   writeReg(&nf2, 0x100000c, 0x00001234);*/
 
-  for(i=0;i<100;i++){
+  //Na primeira posicao escreveremos as portas TCP para drop 
+  writeReg(&nf2, SRAM_BASE_ADDR+(i<<4),4239881808);
+  for(i=1;i<100;i++){
      writeReg(&nf2, SRAM_BASE_ADDR+(i<<4), i<<3);
   }
   for(i=0;i<100;i++){
      readReg(&nf2, (SRAM_BASE_ADDR+(i<<4)), &val);
-     printf("SRAM %x: %x, %x\n",SRAM_BASE_ADDR+(i<<4),val,((i<<3)==val));
+     printf("SRAM %x: %d, %x\n",SRAM_BASE_ADDR+(i<<4),val,((i<<3)==val));
   }
   /*readReg(&nf2, MAC_GRP_0_RX_QUEUE_NUM_PKTS_STORED_REG, &val);
   printf("Num pkts received on port 0:           %u\n", val);

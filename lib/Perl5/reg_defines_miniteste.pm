@@ -2,8 +2,8 @@
 #
 # Perl register defines
 #
-# Project: novo_reference_nic (miniteste)
-# Description: novo reference nic
+# Project: MINIFIREWALL (miniteste)
+# Description: Firewall to parser packets based in TCP port rules
 #
 #############################################################
 
@@ -91,7 +91,6 @@ use Exporter;
                 CPU_QUEUE_3_BASE_ADDR
                 SRAM_BASE_ADDR
                 UDP_BASE_ADDR
-                SIMULACAO_BASE_ADDR
                 IN_ARB_BASE_ADDR
                 BRAM_OQ_BASE_ADDR
                 DRAM_BASE_ADDR
@@ -413,20 +412,6 @@ use Exporter;
                 CPU_QUEUE_3_TX_QUEUE_NUM_OVERRUNS_REG
                 CPU_QUEUE_3_TX_QUEUE_NUM_WORDS_PUSHED_REG
                 CPU_QUEUE_3_TX_QUEUE_NUM_BYTES_PUSHED_REG
-                SIMULACAO_RD_1_DATA_REG
-                SIMULACAO_RD_0_DATA_REG
-                SIMULACAO_TUPLE_PSRC_GEN_REG
-                SIMULACAO_TUPLE_PDST_GEN_REG
-                SIMULACAO_TUPLE_IPSRC_GEN_REG
-                SIMULACAO_TUPLE_IPDST_GEN_REG
-                SIMULACAO_TUPLE_ACKNUM_GEN_REG
-                SIMULACAO_NUM_LEITURA_GEN_REG
-                SIMULACAO_NUM_ESCRITA_GEN_REG
-                SIMULACAO_NUM_ACK_PKTS_GEN_REG
-                SIMULACAO_NUM_ICMP_PKTS_GEN_REG
-                SIMULACAO_NUM_UDP_PKTS_GEN_REG
-                SIMULACAO_NUM_TCP_PKTS_GEN_REG
-                SIMULACAO_NUM_PKTS_GEN_REG
                 IN_ARB_NUM_PKTS_SENT_REG
                 IN_ARB_LAST_PKT_WORD_0_HI_REG
                 IN_ARB_LAST_PKT_WORD_0_LO_REG
@@ -557,8 +542,8 @@ sub DEVICE_MAJOR ()     { 1; }
 sub DEVICE_MINOR ()     { 1; }
 sub DEVICE_REVISION ()  { 2; }
 sub DEVICE_PROJ_DIR ()  { "miniteste"; }
-sub DEVICE_PROJ_NAME () { "novo_reference_nic"; }
-sub DEVICE_PROJ_DESC () { "novo reference nic"; }
+sub DEVICE_PROJ_NAME () { "MINIFIREWALL"; }
+sub DEVICE_PROJ_DESC () { "Firewall to parser packets based in TCP port rules"; }
 
 
 # -------------------------------------
@@ -756,9 +741,8 @@ sub CPU_QUEUE_2_BASE_ADDR ()   { 0x0780000; }
 sub CPU_QUEUE_3_BASE_ADDR ()   { 0x07c0000; }
 sub SRAM_BASE_ADDR ()          { 0x1000000; }
 sub UDP_BASE_ADDR ()           { 0x2000000; }
-sub SIMULACAO_BASE_ADDR ()     { 0x2000000; }
-sub IN_ARB_BASE_ADDR ()        { 0x2000200; }
-sub BRAM_OQ_BASE_ADDR ()       { 0x2000300; }
+sub IN_ARB_BASE_ADDR ()        { 0x2000000; }
+sub BRAM_OQ_BASE_ADDR ()       { 0x2000100; }
 sub DRAM_BASE_ADDR ()          { 0x4000000; }
 
 sub CPU_QUEUE_OFFSET ()   { 0x0040000; }
@@ -1133,74 +1117,56 @@ sub CPU_QUEUE_3_TX_QUEUE_NUM_BYTES_PUSHED_REG ()       { 0x07c003c;}
 # Name: SRAM (SRAM)
 # Description: SRAM
 
-# Name: simulacao (SIMULACAO)
-# Description: Registers for simul
-# File: projects/miniteste/include/simulacao.xml
-sub SIMULACAO_RD_1_DATA_REG ()           { 0x2000000;}
-sub SIMULACAO_RD_0_DATA_REG ()           { 0x2000004;}
-sub SIMULACAO_TUPLE_PSRC_GEN_REG ()      { 0x2000008;}
-sub SIMULACAO_TUPLE_PDST_GEN_REG ()      { 0x200000c;}
-sub SIMULACAO_TUPLE_IPSRC_GEN_REG ()     { 0x2000010;}
-sub SIMULACAO_TUPLE_IPDST_GEN_REG ()     { 0x2000014;}
-sub SIMULACAO_TUPLE_ACKNUM_GEN_REG ()    { 0x2000018;}
-sub SIMULACAO_NUM_LEITURA_GEN_REG ()     { 0x200001c;}
-sub SIMULACAO_NUM_ESCRITA_GEN_REG ()     { 0x2000020;}
-sub SIMULACAO_NUM_ACK_PKTS_GEN_REG ()    { 0x2000024;}
-sub SIMULACAO_NUM_ICMP_PKTS_GEN_REG ()   { 0x2000028;}
-sub SIMULACAO_NUM_UDP_PKTS_GEN_REG ()    { 0x200002c;}
-sub SIMULACAO_NUM_TCP_PKTS_GEN_REG ()    { 0x2000030;}
-sub SIMULACAO_NUM_PKTS_GEN_REG ()        { 0x2000034;}
-
 # Name: in_arb (IN_ARB)
 # Description: Round-robin input arbiter
 # File: lib/verilog/core/input_arbiter/rr_input_arbiter/xml/rr_input_arbiter.xml
-sub IN_ARB_NUM_PKTS_SENT_REG ()        { 0x2000200;}
-sub IN_ARB_LAST_PKT_WORD_0_HI_REG ()   { 0x2000204;}
-sub IN_ARB_LAST_PKT_WORD_0_LO_REG ()   { 0x2000208;}
-sub IN_ARB_LAST_PKT_CTRL_0_REG ()      { 0x200020c;}
-sub IN_ARB_LAST_PKT_WORD_1_HI_REG ()   { 0x2000210;}
-sub IN_ARB_LAST_PKT_WORD_1_LO_REG ()   { 0x2000214;}
-sub IN_ARB_LAST_PKT_CTRL_1_REG ()      { 0x2000218;}
-sub IN_ARB_STATE_REG ()                { 0x200021c;}
+sub IN_ARB_NUM_PKTS_SENT_REG ()        { 0x2000000;}
+sub IN_ARB_LAST_PKT_WORD_0_HI_REG ()   { 0x2000004;}
+sub IN_ARB_LAST_PKT_WORD_0_LO_REG ()   { 0x2000008;}
+sub IN_ARB_LAST_PKT_CTRL_0_REG ()      { 0x200000c;}
+sub IN_ARB_LAST_PKT_WORD_1_HI_REG ()   { 0x2000010;}
+sub IN_ARB_LAST_PKT_WORD_1_LO_REG ()   { 0x2000014;}
+sub IN_ARB_LAST_PKT_CTRL_1_REG ()      { 0x2000018;}
+sub IN_ARB_STATE_REG ()                { 0x200001c;}
 
 # Name: bram_output_queues (BRAM_OQ)
 # Description: BRAM-based output queues
 # File: lib/verilog/core/output_queues/bram_output_queues/xml/bram_output_queues.xml
-sub BRAM_OQ_DISABLE_QUEUES_REG ()                   { 0x2000300;}
-sub BRAM_OQ_QUEUE_0_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x2000380;}
-sub BRAM_OQ_QUEUE_0_NUM_PKTS_RECEIVED_REG ()        { 0x2000384;}
-sub BRAM_OQ_QUEUE_0_NUM_PKTS_DROPPED_REG ()         { 0x2000388;}
-sub BRAM_OQ_QUEUE_0_NUM_WORDS_IN_QUEUE_REG ()       { 0x200038c;}
-sub BRAM_OQ_QUEUE_1_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x2000390;}
-sub BRAM_OQ_QUEUE_1_NUM_PKTS_RECEIVED_REG ()        { 0x2000394;}
-sub BRAM_OQ_QUEUE_1_NUM_PKTS_DROPPED_REG ()         { 0x2000398;}
-sub BRAM_OQ_QUEUE_1_NUM_WORDS_IN_QUEUE_REG ()       { 0x200039c;}
-sub BRAM_OQ_QUEUE_2_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x20003a0;}
-sub BRAM_OQ_QUEUE_2_NUM_PKTS_RECEIVED_REG ()        { 0x20003a4;}
-sub BRAM_OQ_QUEUE_2_NUM_PKTS_DROPPED_REG ()         { 0x20003a8;}
-sub BRAM_OQ_QUEUE_2_NUM_WORDS_IN_QUEUE_REG ()       { 0x20003ac;}
-sub BRAM_OQ_QUEUE_3_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x20003b0;}
-sub BRAM_OQ_QUEUE_3_NUM_PKTS_RECEIVED_REG ()        { 0x20003b4;}
-sub BRAM_OQ_QUEUE_3_NUM_PKTS_DROPPED_REG ()         { 0x20003b8;}
-sub BRAM_OQ_QUEUE_3_NUM_WORDS_IN_QUEUE_REG ()       { 0x20003bc;}
-sub BRAM_OQ_QUEUE_4_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x20003c0;}
-sub BRAM_OQ_QUEUE_4_NUM_PKTS_RECEIVED_REG ()        { 0x20003c4;}
-sub BRAM_OQ_QUEUE_4_NUM_PKTS_DROPPED_REG ()         { 0x20003c8;}
-sub BRAM_OQ_QUEUE_4_NUM_WORDS_IN_QUEUE_REG ()       { 0x20003cc;}
-sub BRAM_OQ_QUEUE_5_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x20003d0;}
-sub BRAM_OQ_QUEUE_5_NUM_PKTS_RECEIVED_REG ()        { 0x20003d4;}
-sub BRAM_OQ_QUEUE_5_NUM_PKTS_DROPPED_REG ()         { 0x20003d8;}
-sub BRAM_OQ_QUEUE_5_NUM_WORDS_IN_QUEUE_REG ()       { 0x20003dc;}
-sub BRAM_OQ_QUEUE_6_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x20003e0;}
-sub BRAM_OQ_QUEUE_6_NUM_PKTS_RECEIVED_REG ()        { 0x20003e4;}
-sub BRAM_OQ_QUEUE_6_NUM_PKTS_DROPPED_REG ()         { 0x20003e8;}
-sub BRAM_OQ_QUEUE_6_NUM_WORDS_IN_QUEUE_REG ()       { 0x20003ec;}
-sub BRAM_OQ_QUEUE_7_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x20003f0;}
-sub BRAM_OQ_QUEUE_7_NUM_PKTS_RECEIVED_REG ()        { 0x20003f4;}
-sub BRAM_OQ_QUEUE_7_NUM_PKTS_DROPPED_REG ()         { 0x20003f8;}
-sub BRAM_OQ_QUEUE_7_NUM_WORDS_IN_QUEUE_REG ()       { 0x20003fc;}
+sub BRAM_OQ_DISABLE_QUEUES_REG ()                   { 0x2000100;}
+sub BRAM_OQ_QUEUE_0_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x2000180;}
+sub BRAM_OQ_QUEUE_0_NUM_PKTS_RECEIVED_REG ()        { 0x2000184;}
+sub BRAM_OQ_QUEUE_0_NUM_PKTS_DROPPED_REG ()         { 0x2000188;}
+sub BRAM_OQ_QUEUE_0_NUM_WORDS_IN_QUEUE_REG ()       { 0x200018c;}
+sub BRAM_OQ_QUEUE_1_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x2000190;}
+sub BRAM_OQ_QUEUE_1_NUM_PKTS_RECEIVED_REG ()        { 0x2000194;}
+sub BRAM_OQ_QUEUE_1_NUM_PKTS_DROPPED_REG ()         { 0x2000198;}
+sub BRAM_OQ_QUEUE_1_NUM_WORDS_IN_QUEUE_REG ()       { 0x200019c;}
+sub BRAM_OQ_QUEUE_2_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x20001a0;}
+sub BRAM_OQ_QUEUE_2_NUM_PKTS_RECEIVED_REG ()        { 0x20001a4;}
+sub BRAM_OQ_QUEUE_2_NUM_PKTS_DROPPED_REG ()         { 0x20001a8;}
+sub BRAM_OQ_QUEUE_2_NUM_WORDS_IN_QUEUE_REG ()       { 0x20001ac;}
+sub BRAM_OQ_QUEUE_3_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x20001b0;}
+sub BRAM_OQ_QUEUE_3_NUM_PKTS_RECEIVED_REG ()        { 0x20001b4;}
+sub BRAM_OQ_QUEUE_3_NUM_PKTS_DROPPED_REG ()         { 0x20001b8;}
+sub BRAM_OQ_QUEUE_3_NUM_WORDS_IN_QUEUE_REG ()       { 0x20001bc;}
+sub BRAM_OQ_QUEUE_4_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x20001c0;}
+sub BRAM_OQ_QUEUE_4_NUM_PKTS_RECEIVED_REG ()        { 0x20001c4;}
+sub BRAM_OQ_QUEUE_4_NUM_PKTS_DROPPED_REG ()         { 0x20001c8;}
+sub BRAM_OQ_QUEUE_4_NUM_WORDS_IN_QUEUE_REG ()       { 0x20001cc;}
+sub BRAM_OQ_QUEUE_5_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x20001d0;}
+sub BRAM_OQ_QUEUE_5_NUM_PKTS_RECEIVED_REG ()        { 0x20001d4;}
+sub BRAM_OQ_QUEUE_5_NUM_PKTS_DROPPED_REG ()         { 0x20001d8;}
+sub BRAM_OQ_QUEUE_5_NUM_WORDS_IN_QUEUE_REG ()       { 0x20001dc;}
+sub BRAM_OQ_QUEUE_6_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x20001e0;}
+sub BRAM_OQ_QUEUE_6_NUM_PKTS_RECEIVED_REG ()        { 0x20001e4;}
+sub BRAM_OQ_QUEUE_6_NUM_PKTS_DROPPED_REG ()         { 0x20001e8;}
+sub BRAM_OQ_QUEUE_6_NUM_WORDS_IN_QUEUE_REG ()       { 0x20001ec;}
+sub BRAM_OQ_QUEUE_7_NUM_PKT_BYTES_RECEIVED_REG ()   { 0x20001f0;}
+sub BRAM_OQ_QUEUE_7_NUM_PKTS_RECEIVED_REG ()        { 0x20001f4;}
+sub BRAM_OQ_QUEUE_7_NUM_PKTS_DROPPED_REG ()         { 0x20001f8;}
+sub BRAM_OQ_QUEUE_7_NUM_WORDS_IN_QUEUE_REG ()       { 0x20001fc;}
 
-sub BRAM_OQ_QUEUE_GROUP_BASE_ADDR ()  { 0x2000380; }
+sub BRAM_OQ_QUEUE_GROUP_BASE_ADDR ()  { 0x2000180; }
 sub BRAM_OQ_QUEUE_GROUP_INST_OFFSET() { 0x0000010; }
 
 # Name: DRAM (DRAM)

@@ -14,6 +14,7 @@ module minifirewall
       parameter DATA_WIDTH = 64,
       parameter CTRL_WIDTH = DATA_WIDTH/8,
       parameter SRAM_ADDR_WIDTH = 19,
+      parameter SRAM_DATA_WIDTH = DATA_WIDTH+CTRL_WIDTH,
       parameter UDP_REG_SRC_WIDTH = 2
    )
    (
@@ -74,9 +75,6 @@ module minifirewall
    localparam                    CONSULTA_FALSO = 9;
    localparam                    ENVIA_WORDS_1_4 = 10;
 
-   localparam                    FIM_REGRAS = 19'hC;
-   localparam                    NUM_RULES = 4;
-
    localparam ICMP        = 'h01;
    localparam TCP        = 'h06;
    localparam UDP        = 'h11;
@@ -92,17 +90,14 @@ module minifirewall
    reg [3:0]                     state, state_next;
       
    reg                           wr_0_req_next, rd_0_req_next;
-   reg [DATA_WIDTH-1:0]          wr_0_data_next, rd_0_data_next;
+   reg [DATA_WIDTH-1:0]          wr_0_data_next;
+ 
    reg [SRAM_ADDR_WIDTH-1:0]     wr_0_addr_next, rd_0_addr_next;
 
-   reg [SRAM_ADDR_WIDTH-1:0]     next_addr_rd_next;
-   reg [SRAM_ADDR_WIDTH-1:0]     next_addr_rd;
-
    reg [31:0]                    num_TCP, num_TCP_next;
-   //wire [`CPCI_NF2_DATA_WIDTH-1:0]   endereco19_porta13;
 
-   reg [2:0]                     read_rules, read_rules_next;
    reg [15:0]                    dst_port, dst_port_next;
+   reg [15:0]                    src_port, src_port_next;
    reg                           drop, drop_next;
 
    reg [CTRL_WIDTH+DATA_WIDTH-1:0]   word1,word2,word3,word4;
@@ -188,19 +183,15 @@ module minifirewall
       
       num_TCP = num_TCP_next;
 
-      next_addr_rd_next = next_addr_rd;
-
       wr_0_req_next = 0;
       wr_0_data_next = wr_0_data;
       wr_0_addr_next = wr_0_addr;
 
       rd_0_req_next = 0;
-      rd_0_data_next = rd_0_data;
       rd_0_addr_next = rd_0_addr;
 
-      read_rules_next = read_rules;      
-
       dst_port_next = dst_port;
+      src_port_next = src_port;
       drop_next = drop;
 
       //early data words
@@ -231,6 +222,7 @@ module minifirewall
       end
       WORD2_CHECK_IPV4: begin
          $display("WORD2: %h\n",word_saved);
+         $display("CPCI_NF2_DATA: %d, ADDR: %d\n",`CPCI_NF2_DATA_WIDTH,`CPCI_NF2_ADDR_WIDTH);
          if (!in_fifo_empty && out_rdy) begin
             //out_wr = 1;
             in_fifo_rd_en = 1;
@@ -283,17 +275,21 @@ module minifirewall
          if (!in_fifo_empty && out_rdy) begin
             //out_wr = 1;
             dst_port_next = in_fifo_data[31:16];
-            $display("DSTPORT: %d\n",in_fifo_data[31:16]);
+            src_port_next = in_fifo_data[47:32];
             //state_next = PAYLOAD;
-            state_next = CONSULTA_FALSO;
+            state_next = CONSULTA_REGRAS;
+            //synthesis translate_off
+            #1 state_next = CONSULTA_FALSO;
+            //synthesis translate_on
          end
          else
             state_next = WORD5_TCP_PORT;
       end
       CONSULTA_FALSO: begin
-         $display("CONSULTA_FALSO\n");
-         if((dst_port >=80 && dst_port < 95) || 
-               (dst_port >=1010 && dst_port < 1025)) begin
+         $display("CONSULTA_FALSO. DSTPORT: %d, SRCPORT: %d\n",dst_port,src_port);
+         /*if((dst_port >=80 && dst_port < 95) || 
+               (dst_port >=1010 && dst_port < 1025)) begin*/
+         if (dst_port == 1025) begin
             drop_next = 1;
             state_next = PAYLOAD;
          end
@@ -304,23 +300,34 @@ module minifirewall
       end
       CONSULTA_REGRAS: begin
          rd_0_req_next = 1;
-         rd_0_addr_next = next_addr_rd;
-         next_addr_rd_next = next_addr_rd + 'h4;
-         if(next_addr_rd > FIM_REGRAS)
-            state_next = VERIFICA_PORTA;
-         else
-            state_next = CONSULTA_REGRAS;
+         rd_0_addr_next = 'h0;
+         state_next = VERIFICA_PORTA;
       end
       VERIFICA_PORTA: begin
-         if (read_rules < NUM_RULES) begin
-            if (rd_0_ack) 
-               read_rules_next = read_rules + 'h1;
-            else
-               read_rules_next = read_rules;
-            state_next = VERIFICA_PORTA;
+         if (rd_0_ack) begin
+            if(rd_0_data[17:0] == dst_port) begin
+               drop_next = 1;
+               state_next = PAYLOAD;
+            end
+            else if(rd_0_data[35:18] == dst_port) begin
+               drop_next = 1;
+               state_next = PAYLOAD;
+            end
+            else if(rd_0_data[53:36] == dst_port) begin
+               drop_next = 1;
+               state_next = PAYLOAD;
+            end
+            else if(rd_0_data[71:54] == dst_port) begin
+               drop_next = 1;
+               state_next = PAYLOAD;
+            end
+            else begin
+               drop_next = 0;
+               state_next = ENVIA_WORDS_1_4;
+            end
          end
          else
-            state_next = PAYLOAD;
+            state_next = VERIFICA_PORTA;
       end
       ENVIA_WORDS_1_4: begin
          $display("ENVIA_WORDS_1_4: %h\n", word_saved);
@@ -369,7 +376,6 @@ module minifirewall
             in_fifo_rd_en = 1;
             out_wr = 1;
             if(in_fifo_ctrl != 'h0) begin
-               $display("NAO CAI AQUI\n");
                state_next = SKIP_HDR;
                drop_next = 0;
                word_saved_next = 'h0;
@@ -397,10 +403,11 @@ module minifirewall
          wr_0_req <= 0;
          rd_0_req <= 0;
          state <= 1;
-         next_addr_rd <= 0;
          num_TCP <= 0;
          drop <= 0;
          word_saved <= 0;
+         dst_port <= 0;
+         src_port <= 0;
       end
       else begin
          state <= state_next;
@@ -410,8 +417,8 @@ module minifirewall
          wr_0_req <= wr_0_req_next;
          wr_0_data <= wr_0_data_next;
          wr_0_addr <= wr_0_addr_next;
-         read_rules <= read_rules_next;
          dst_port <= dst_port_next;
+         src_port <= src_port_next;
          drop <= drop_next;
          word_saved <= word_saved_next;
          word1 <= word1_next;
