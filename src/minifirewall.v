@@ -223,7 +223,6 @@ module minifirewall
       WORD2_CHECK_IPV4: begin
          $display("WORD2: %h\n",word_saved);
          //$display("CPCI_NF2_DATA: %d, ADDR: %d\n",`CPCI_NF2_DATA_WIDTH,`CPCI_NF2_ADDR_WIDTH);
-         $display("TTL: %d, PROTO: %d\n",in_fifo_data[15:8],in_fifo_data[7:0]);
          if (!in_fifo_empty && out_rdy) begin
             //out_wr = 1;
             in_fifo_rd_en = 1;
@@ -240,13 +239,13 @@ module minifirewall
       end
       WORD3_CHECK_TCP: begin
          $display("WORD3\n");
-         $display("IP: %d:%d:%d:%d\n",in_fifo_data[47:40],in_fifo_data[39:32],in_fifo_data[31:24],in_fifo_data[23:16]);
+         $display("TTL: %d, PROTO: %d\n",in_fifo_data[15:8],in_fifo_data[7:0]);
          if (!in_fifo_empty && out_rdy) begin
             in_fifo_rd_en = 1;
             //out_wr = 1;
             case(in_fifo_data[7:0]) //protocolo
                TCP: begin
-                  $display("TCP\n");
+                  $display("NEWTCP\n");
                   num_TCP_next = num_TCP + 'h1;
                   word3_next = {in_fifo_ctrl,in_fifo_data};
                   word_saved_next = word_saved + 'h1;
@@ -262,6 +261,7 @@ module minifirewall
       end
       WORD4_IP_ADDR: begin
          $display("WORD4: %d\n", in_fifo_data[31:16]);
+         $display("IP: %d:%d:%d:%d\n",in_fifo_data[47:40],in_fifo_data[39:32],in_fifo_data[31:24],in_fifo_data[23:16]);
          if (!in_fifo_empty && out_rdy) begin
             in_fifo_rd_en = 1;
             //out_wr = 1;
@@ -273,15 +273,17 @@ module minifirewall
             state_next = WORD4_IP_ADDR;
       end
       WORD5_TCP_PORT: begin
-         $display("WORD5: %d\n", in_fifo_data[31:16]);
+         $display("WORD5\n");
+         $display("PORTA: %d, %d\n",in_fifo_data[47:32],in_fifo_data[31:16]);
          if (!in_fifo_empty && out_rdy) begin
             //out_wr = 1;
+            //in_fifo_rd_en = 1;
             dst_port_next = in_fifo_data[31:16];
             src_port_next = in_fifo_data[47:32];
             //state_next = PAYLOAD;
             state_next = CONSULTA_REGRAS;
             //synthesis translate_off
-            #1 state_next = CONSULTA_FALSO;
+            state_next = CONSULTA_FALSO;
             //synthesis translate_on
          end
          else
@@ -291,13 +293,16 @@ module minifirewall
          $display("CONSULTA_FALSO. DSTPORT: %d, SRCPORT: %d\n",dst_port,src_port);
          /*if((dst_port >=80 && dst_port < 95) || 
                (dst_port >=1010 && dst_port < 1025)) begin*/
-         if (dst_port == 1025) begin
+         //between 1010 and 1060 there are 50 pkts that will be dropped
+         if (dst_port >= 1010 && dst_port < 1060) begin
             drop_next = 1;
             state_next = PAYLOAD;
+            $display("REJECTED\n");
          end
          else begin
             drop_next = 0;
             state_next = ENVIA_WORDS_1_4;
+            $display("ACCEPTED\n");
          end
       end
       CONSULTA_REGRAS: begin
@@ -364,7 +369,8 @@ module minifirewall
                word_saved_next = word_saved - 'h1;
             end
             default: begin
-               out_wr = 0;
+               out_wr = 1;
+               in_fifo_rd_en = 1;
                state_next = PAYLOAD;
             end
             endcase
@@ -384,11 +390,11 @@ module minifirewall
             end
             else begin
                if(drop) begin
-                  $display("DROPPED\n");
+                  //$display("DROPPED\n");
                   out_ctrl = 'h54; //Next module won't recognize pkt
                end
                else begin
-                  $display("NOTDROPPED\n");
+                  //$display("NOTDROPPED\n");
                   out_ctrl   = in_fifo_ctrl;
                end
                state_next = PAYLOAD;

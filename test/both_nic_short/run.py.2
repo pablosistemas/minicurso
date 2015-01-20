@@ -23,7 +23,7 @@ TTL = 64
 port1 = 80
 port2 = 1010
 #The num_pkts set here must be changed in simulacao.v(line 1054), too
-NUM_PKTS = 100
+NUM_PKTS =3
 
 eth_hdr=14
 ipv4_hdr=20
@@ -51,10 +51,12 @@ nftest_barrier()
 '''
 
 #add recently
-for iter in range(1):
+for iter in range(2):
    for i in range(NUM_PKTS):
-      hdr.dport=port1+(i+1)
-      hdr.sport=port2+(i+2)
+      #hdr.dport=port1*(i+1)
+      #hdr.sport=port2*(i+2)
+      hdr.dport=i+1
+      hdr.sport=i+2
       hdr.flags = 0b00010
       '''DA = "0xD0:0x27:0x88:0xBC:0xA8:0x%02x"%(i)
       SA = "0x0:0x4E:0x46:0x32:0x43:0x%02x"%(i)'''
@@ -66,16 +68,18 @@ for iter in range(1):
       #seqn = i*(pkt.len+1)
       seqn = i*(50)
       pkt.seq = seqn 
-      #print "len_packet %d"%(pkt.len)
-      #print "sequencenum %d"%(seqn)
+      print "len_packet %d"%(pkt.len)
+      print "sequencenum %d"%(seqn)
 
       nftest_send_phy('nf2c0', pkt)
-      nftest_expect_dma('nf2c0', pkt)
+      #nftest_expect_dma('nf2c0', pkt)
 
    #ACK+DATA
    for i in range(NUM_PKTS):
-      hdr.dport=port2+(i+2)
-      hdr.sport=port1+(i+1)
+      #hdr.dport=port2*(i+2)
+      #hdr.sport=port1*(i+1)
+      hdr.sport=i+2
+      hdr.dport=i+1
       hdr.flags = 0b10010
       '''DA = "0xD0:0x27:0x88:0xBC:0xA8:0x%02x"%(i)
       SA = "0x0:0x4E:0x46:0x32:0x43:0x%02x"%(i)'''
@@ -89,10 +93,10 @@ for iter in range(1):
       #pkt.ack = seqn+pkt.len+1
       #pkt.ack = (i+1)*(pkt.len+1)
       pkt.ack = (i)*(50)+pkt.len+1
-      #print "len_packet %d"%(pkt.len)
-      #print "acknum %d"%(pkt.ack)
+      print "len_packet %d"%(pkt.len)
+      print "acknum %d"%(pkt.ack)
 
       nftest_send_phy('nf2c0', pkt)
-      nftest_expect_dma('nf2c0', pkt)
+      #nftest_expect_dma('nf2c0', pkt)
 
 nftest_finish()
