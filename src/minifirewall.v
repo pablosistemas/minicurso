@@ -222,7 +222,8 @@ module minifirewall
       end
       WORD2_CHECK_IPV4: begin
          $display("WORD2: %h\n",word_saved);
-         $display("CPCI_NF2_DATA: %d, ADDR: %d\n",`CPCI_NF2_DATA_WIDTH,`CPCI_NF2_ADDR_WIDTH);
+         //$display("CPCI_NF2_DATA: %d, ADDR: %d\n",`CPCI_NF2_DATA_WIDTH,`CPCI_NF2_ADDR_WIDTH);
+         $display("TTL: %d, PROTO: %d\n",in_fifo_data[15:8],in_fifo_data[7:0]);
          if (!in_fifo_empty && out_rdy) begin
             //out_wr = 1;
             in_fifo_rd_en = 1;
@@ -238,7 +239,8 @@ module minifirewall
             state_next = WORD2_CHECK_IPV4;
       end
       WORD3_CHECK_TCP: begin
-         $display("WORD3: %h\n",word_saved);
+         $display("WORD3\n");
+         $display("IP: %d:%d:%d:%d\n",in_fifo_data[47:40],in_fifo_data[39:32],in_fifo_data[31:24],in_fifo_data[23:16]);
          if (!in_fifo_empty && out_rdy) begin
             in_fifo_rd_en = 1;
             //out_wr = 1;
@@ -259,7 +261,7 @@ module minifirewall
             state_next = WORD3_CHECK_TCP;
       end
       WORD4_IP_ADDR: begin
-         $display("WORD4: %h\n", word_saved);
+         $display("WORD4: %d\n", in_fifo_data[31:16]);
          if (!in_fifo_empty && out_rdy) begin
             in_fifo_rd_en = 1;
             //out_wr = 1;
@@ -271,7 +273,7 @@ module minifirewall
             state_next = WORD4_IP_ADDR;
       end
       WORD5_TCP_PORT: begin
-         $display("WORD5: %h\n", word_saved);
+         $display("WORD5: %d\n", in_fifo_data[31:16]);
          if (!in_fifo_empty && out_rdy) begin
             //out_wr = 1;
             dst_port_next = in_fifo_data[31:16];

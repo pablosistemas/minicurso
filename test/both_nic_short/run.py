@@ -54,8 +54,8 @@ nftest_barrier()
 #add recently
 for iter in range(1):
    for i in range(NUM_PKTS):
-      hdr.dport=port1+(i+1)
-      hdr.sport=port2+(i+2)
+      hdr.dport=port1+i
+      hdr.sport=port2+i
       hdr.flags = 0b00010
       '''DA = "0xD0:0x27:0x88:0xBC:0xA8:0x%02x"%(i)
       SA = "0x0:0x4E:0x46:0x32:0x43:0x%02x"%(i)'''
@@ -76,8 +76,8 @@ for iter in range(1):
 
    #ACK+DATA
    for i in range(NUM_PKTS):
-      hdr.dport=port2+(i+2)
-      hdr.sport=port1+(i+1)
+      hdr.dport=port2+i
+      hdr.sport=port1+i
       hdr.flags = 0b10010
       '''DA = "0xD0:0x27:0x88:0xBC:0xA8:0x%02x"%(i)
       SA = "0x0:0x4E:0x46:0x32:0x43:0x%02x"%(i)'''
