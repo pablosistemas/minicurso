@@ -209,16 +209,79 @@ module sram_arbiter  #(parameter SRAM_ADDR_WIDTH = 19,
                sram_addr1 <= sram_reg_addr[19:1];
                sram_addr2 <= sram_reg_addr[19:1];
                //sram_wr_data_early2 <= sram_reg_addr[0] ? {12'h0,sram_reg_wr_data,36'h0}:{48'h0,sram_reg_wr_data};
-               sram_wr_data_early2 <= {8'h0,sram_reg_wr_data[31:22],11'h0,sram_reg_wr_data[31:22],11'h0,sram_reg_wr_data[21:15],11'h0,sram_reg_wr_data[14:8],10'h0,sram_reg_wr_data[7:0]};
+               //sram_wr_data_early2 <= {8'h0,sram_reg_wr_data[31:22],11'h0,sram_reg_wr_data[31:22],11'h0,sram_reg_wr_data[21:15],11'h0,sram_reg_wr_data[14:8],10'h0,sram_reg_wr_data[7:0]};
+                     
+               case(sram_reg_wr_data[31:28])
+                  1: begin
+                     sram_wr_data_early2 <= {54'h0,sram_reg_wr_data[17:0]};
+                     if(!sram_reg_rd_wr_L) begin
+                        $display("0b11: %x, %x\n",sram_reg_wr_data,sram_reg_addr);
+                        sram_bw <= 8'b11111100;
+                        sram_we <= 1'b0;
+                     end
+                     else begin //leitura
+                        sram_bw <= 8'hff;
+                        sram_we <= 1'b1;
+                     end 
+                  end 
+                  2: begin
+                     sram_wr_data_early2 <= {36'h0,sram_reg_wr_data[17:0],18'h0};
+                     if(!sram_reg_rd_wr_L) begin
+                        $display("0b1100: %x, %x\n",sram_reg_wr_data,sram_reg_addr);
+                        sram_bw <= 8'b11110011;
+                        sram_we <= 1'b0;
+                     end
+                     else begin //leitura
+                        sram_bw <= 8'hff;
+                        sram_we <= 1'b1;
+                     end 
+                  end
+                  3: begin
+                     sram_wr_data_early2 <= {18'h0,sram_reg_wr_data[17:0],36'h0};
+                     if(!sram_reg_rd_wr_L) begin
+                        $display("0b110000: %x, %x\n",sram_reg_wr_data,sram_reg_addr);
+                        sram_bw <= 8'b11001111;
+                        sram_we <= 1'b0;
+                     end
+                     else begin //leitura
+                        sram_bw <= 8'hff;
+                        sram_we <= 1'b1;
+                     end 
+                  end
+                  4: begin
+                     sram_wr_data_early2 <= {sram_reg_wr_data[17:0],54'h0};
+                     if(!sram_reg_rd_wr_L) begin
+                        $display("0b11000000: %x, %x\n",sram_reg_wr_data,sram_reg_addr);
+                        sram_bw <= 8'b00111111;
+                        sram_we <= 1'b0;
+                     end
+                     else begin //leitura
+                        sram_bw <= 8'hff;
+                        sram_we <= 1'b1;
+                     end 
+                  end
+               endcase
+
+               /*if(!sram_reg_rd_wr_L) begin
+                        $display("0b11000000: %x\n",sram_reg_wr_data);
+                        sram_bw <= 8'b11000000;
+                        sram_we <= 1'b0;
+                     end
+                     else begin //leitura
+                        sram_bw <= 8'hff;
+                        sram_we <= 1'b1;
+                     end 
+               end*/ 
+
                sram_tri_en_early2 <= !sram_reg_rd_wr_L && sram_reg_req;
-               if(!sram_reg_rd_wr_L) begin
+               /*if(!sram_reg_rd_wr_L) begin
                   sram_bw <= sram_reg_addr[0] ? 8'h0f : 8'hf0;
                   sram_we <= 1'b0;
                end
                else begin //leitura
                   sram_bw <= 8'hff;
                   sram_we <= 1'b1;
-               end 
+               end*/ 
                rd_0_ack <= 0;
                wr_0_ack <= 0;
                rd_0_vld_early3 <= 0;

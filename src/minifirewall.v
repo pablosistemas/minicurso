@@ -222,7 +222,7 @@ module minifirewall
       end
       WORD2_CHECK_IPV4: begin
          $display("WORD2: %h\n",word_saved);
-         //$display("CPCI_NF2_DATA: %d, ADDR: %d\n",`CPCI_NF2_DATA_WIDTH,`CPCI_NF2_ADDR_WIDTH);
+         $display("CPCI_NF2_DATA: %d, ADDR: %d\n",`CPCI_NF2_DATA_WIDTH,`CPCI_NF2_ADDR_WIDTH);
          if (!in_fifo_empty && out_rdy) begin
             //out_wr = 1;
             if(in_fifo_data[15:12] != 4'h4) begin
