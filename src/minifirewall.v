@@ -225,13 +225,17 @@ module minifirewall
          //$display("CPCI_NF2_DATA: %d, ADDR: %d\n",`CPCI_NF2_DATA_WIDTH,`CPCI_NF2_ADDR_WIDTH);
          if (!in_fifo_empty && out_rdy) begin
             //out_wr = 1;
-            in_fifo_rd_en = 1;
-            if(in_fifo_data[15:12] != 4'h4)
+            if(in_fifo_data[15:12] != 4'h4) begin
+               {out_ctrl,out_data} = word1;
+               out_wr = 1;
+               in_fifo_rd_en = 0;
                state_next = PAYLOAD;
+            end
             else begin
                word2_next = {in_fifo_ctrl,in_fifo_data};
                word_saved_next = word_saved + 'h1;
                state_next = WORD3_CHECK_TCP;
+               in_fifo_rd_en = 1;
             end
          end
          else
@@ -241,18 +245,26 @@ module minifirewall
          $display("WORD3\n");
          $display("TTL: %d, PROTO: %d\n",in_fifo_data[15:8],in_fifo_data[7:0]);
          if (!in_fifo_empty && out_rdy) begin
-            in_fifo_rd_en = 1;
             //out_wr = 1;
             case(in_fifo_data[7:0]) //protocolo
                TCP: begin
                   $display("NEWTCP\n");
+                  in_fifo_rd_en = 1;
                   num_TCP_next = num_TCP + 'h1;
                   word3_next = {in_fifo_ctrl,in_fifo_data};
                   word_saved_next = word_saved + 'h1;
                   state_next = WORD4_IP_ADDR;
                end
                default: begin
-                  state_next = PAYLOAD;
+                  $display("NAOTCP\n");
+                  in_fifo_rd_en = 0;
+                  out_wr = 1;
+                  {out_ctrl,out_data} = word1;
+               //decrement because word1 is already forward
+                  word_saved_next = word_saved - 'h1;
+               //word_saved equal 1 sends word4, so we copy here   
+                  word4_next = word2;
+                  state_next = ENVIA_WORDS_1_4;
                end
             endcase
          end
@@ -410,7 +422,7 @@ module minifirewall
       if(reset) begin
          wr_0_req <= 0;
          rd_0_req <= 0;
-         state <= 1;
+         state <= SKIP_HDR;
          num_TCP <= 0;
          drop <= 0;
          word_saved <= 0;

@@ -27,16 +27,50 @@ Target Device                       : 2vp50ff1152-7
 *                        Optimizations                                  *
 =========================================================================
 ---- Statistics
-   Number of registers added by Replication                  | 1               
+   Number of registers added by Replication                  | 35              
 
-   Overall change in number of registers                     | +1               
+   Overall change in number of registers                     | +35              
 
 
 ---- Details
 
 New or modified components                             | Optimization             | Objective           
 -------------------------------------------------------|--------------------------|----------------------
-nf2_core/cpu_queues[2].cpu_dma_queue_i/.cpu_dma_queue_regs/reg_cnt_1_REPLICA_2| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_18| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_19| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_20| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_21| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_22| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_23| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_24| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_25| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_26| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_27| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_28| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_29| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_30| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_31| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_32| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_33| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(0)_REPLICA_34| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_0| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_1| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_10| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_11| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_12| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_13| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_14| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_15| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_16| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_17| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_2| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_3| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_4| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_5| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_6| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_7| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_8| Replication              | Fanout Optimization
+nf2_core/user_data_path/minifirewall/input_fifo/dout_sel(1)_REPLICA_9| Replication              | Fanout Optimization
 
 
 

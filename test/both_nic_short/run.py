@@ -70,7 +70,11 @@ for iter in range(1):
       #print "sequencenum %d"%(seqn)
 
       nftest_send_phy('nf2c0', pkt)
-      nftest_expect_dma('nf2c0', pkt)
+      #we only expect pkts not dropped by firewall.
+      #In simulation (only), we defined a static rule than all pkts
+      #with dport between 1010 and 1060 will be dropped
+      if pkt.dport < 1010 or pkt.dport >= 1060 :
+         nftest_expect_dma('nf2c0', pkt)
 
    #ACK+DATA
    for i in range(NUM_PKTS):
@@ -93,6 +97,7 @@ for iter in range(1):
       #print "acknum %d"%(pkt.ack)
 
       nftest_send_phy('nf2c0', pkt)
-      nftest_expect_dma('nf2c0', pkt)
+      if pkt.dport < 1010 or pkt.dport >= 1060 :
+         nftest_expect_dma('nf2c0', pkt)
 
 nftest_finish()
