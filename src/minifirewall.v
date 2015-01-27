@@ -295,7 +295,7 @@ module minifirewall
             //state_next = PAYLOAD;
             state_next = CONSULTA_REGRAS;
             //synthesis translate_off
-            state_next = CONSULTA_FALSO;
+            //state_next = CONSULTA_FALSO;
             //synthesis translate_on
          end
          else
@@ -318,29 +318,38 @@ module minifirewall
          end
       end
       CONSULTA_REGRAS: begin
+         $display("CONSULTA REGRAS\n");
          rd_0_req_next = 1;
          rd_0_addr_next = 'h0;
          state_next = VERIFICA_PORTA;
       end
       VERIFICA_PORTA: begin
-         if (rd_0_ack) begin
+         $display("VERIFICA PORTA\n");
+         //if (rd_0_ack) begin
+         if (rd_0_vld) begin
+            $display("dataread: %h\n",rd_0_data);
             if(rd_0_data[17:0] == dst_port) begin
+               $display("REJECTED1\n");
                drop_next = 1;
                state_next = PAYLOAD;
             end
             else if(rd_0_data[35:18] == dst_port) begin
+               $display("REJECTED2\n");
                drop_next = 1;
                state_next = PAYLOAD;
             end
             else if(rd_0_data[53:36] == dst_port) begin
+               $display("REJECTED3\n");
                drop_next = 1;
                state_next = PAYLOAD;
             end
             else if(rd_0_data[71:54] == dst_port) begin
+               $display("REJECTED4\n");
                drop_next = 1;
                state_next = PAYLOAD;
             end
             else begin
+               $display("ACCEPTED\n");
                drop_next = 0;
                state_next = ENVIA_WORDS_1_4;
             end
