@@ -75,7 +75,6 @@ while(i < NUM_PKTS):
    seqn = i*(50)
    pkt.seq = seqn
    nftest_send_phy('nf2c0', pkt)
-   print "portaa: %d %d %d"%(PORTS[i], i, NUM_PKTS)
    # if(PORTS[i] not in pdrop):
    if(PORTS[i] != pdrop[0] and PORTS[i] != pdrop[1] and PORTS[i] != pdrop[2] and PORTS[i] != pdrop[3]):
       nftest_expect_dma('nf2c0', pkt)
@@ -84,12 +83,11 @@ while(i < NUM_PKTS):
 nftest_barrier()
 
 
+simReg.regDelay(1000) #1us
 print "Checking pkt errors"
 # check counter values
-#nftest_regread_expect(reg_defines.CPU_QUEUE_0_RX_QUEUE_NUM_PKTS_IN_QUEUE_REG() + 0*reg_defines.MAC_GRP_OFFSET(), NUM_PKTS-NUM_PKTS_DROPPED)
-#nftest_regread_expect(reg_defines.CPU_QUEUE_0_RX_QUEUE_NUM_PKTS_IN_QUEUE_REG(), NUM_PKTS)
 #nftest_regread_expect(reg_defines.MAC_GRP_0_TX_QUEUE_NUM_PKTS_SENT_REG(), NUM_PKTS)
-#nftest_regread_expect(reg_defines.MAC_GRP_0_RX_QUEUE_NUM_BYTES_PUSHED_REG() + i*reg_defines.MAC_GRP_OFFSET(), totalPktLengths[i])
+nftest_regread_expect(reg_defines.MAC_GRP_0_RX_QUEUE_NUM_PKTS_STORED_REG(), NUM_PKTS)
 #nftest_regread_expect(reg_defines.MAC_GRP_0_TX_QUEUE_NUM_BYTES_PUSHED_REG() + i*reg_defines.MAC_GRP_OFFSET(), totalPktLengths[i])
 
 nftest_finish()

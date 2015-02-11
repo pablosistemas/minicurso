@@ -106,8 +106,7 @@ module minifirewall
    reg [2:0]                     word_saved, word_saved_next;
 
    wire [31:0]                   dport1, dport2, dport3, dport4;
-   reg                           reg_ack_early1;
-   reg [63:0]                    data_early1;
+   wire                          addr_good, tag_addr;
    //------------------------- Local assignments -------------------------------
 
    assign in_rdy     = !in_fifo_nearly_full;
@@ -135,8 +134,8 @@ module minifirewall
    generic_regs
    #(
       .UDP_REG_SRC_WIDTH   (UDP_REG_SRC_WIDTH),
-      .TAG                 (0),                 // Tag -- eg. MODULE_TAG
-      .REG_ADDR_WIDTH      (7), // Width of block addresses -- eg. MODULE_REG_ADDR_WIDTH
+      .TAG                 (`MINIFIREWALL_BLOCK_ADDR),                 // Tag -- eg. MODULE_TAG
+      .REG_ADDR_WIDTH      (`MINIFIREWALL_REG_ADDR_WIDTH), // Width of block addresses -- eg. MODULE_REG_ADDR_WIDTH
       .NUM_COUNTERS        (0),                 // Number of counters
       .NUM_SOFTWARE_REGS   (4),                 // Number of sw regs
       .NUM_HARDWARE_REGS   (0)                  // Number of hw regs
@@ -172,23 +171,22 @@ module minifirewall
    //------------------------- Logic-------------------------------
    //
 
+   assign tag_addr = reg_addr_out[`UDP_REG_ADDR_WIDTH - 1:`MINIFIREWALL_REG_ADDR_WIDTH]==`MINIFIREWALL_BLOCK_ADDR;
+   assign addr_good = reg_addr_out[`MINIFIREWALL_REG_ADDR_WIDTH-1:0] >= `MINIFIREWALL_DPORT1 && reg_addr_out[`MINIFIREWALL_REG_ADDR_WIDTH] <= `MINIFIREWALL_DPORT4;
+
    always @(*) begin
-      if(reset) begin
-         wr_0_req <= 0;
+      wr_0_data_next <= {dport4[15:0],dport3[15:0],dport2[15:0],dport1[15:0]};
+      wr_0_addr_next <= 'h0;
+      if(tag_addr && addr_good && reg_ack_out) begin
+         wr_0_req_next <= 1;
+         $display("endereco: %x\n", reg_addr_out);
       end
-      else begin
-         if(!reg_ack_early1&&reg_ack_out) 
-            wr_0_req <= 1;
-         else
-            wr_0_req <= 0;
-         reg_ack_early1 <= reg_ack_in;
-         wr_0_data <= {dport4[15:0],dport3[15:0],dport2[15:0],dport1[15:0]};
-         wr_0_addr <= 'h0;
-         //synthesis translate_off
-         if(rd_0_ack) 
-            $display("GRAVADO\n");
-         //synthesis translate_on
-      end
+      else
+         wr_0_req_next <= 0;
+      //synthesis translate_off
+      if(wr_0_ack) 
+         $display("GRAVADO\n");
+      //synthesis translate_on
    end
 
    always @(*) begin
@@ -459,6 +457,10 @@ module minifirewall
          // SRAM
          rd_0_req <= rd_0_req_next;
          rd_0_addr <= rd_0_addr_next;
+         wr_0_data <= wr_0_data_next;
+         wr_0_addr <= wr_0_addr_next;
+         wr_0_req <= wr_0_req_next;
+
          dst_port <= dst_port_next;
          src_port <= src_port_next;
          drop <= drop_next;
