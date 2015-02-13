@@ -72,11 +72,14 @@ while(i < NUM_PKTS):
    pkt = scapy.Ether(dst=DA, src=SA)/scapy.IP(dst=DST_IP,
          src=SRC_IP, ttl=TTL)/HDR/LOAD
    pkt.len = (len(LOAD))+eth_hdr+ipv4_hdr+tcp_hdr
-   seqn = i*(50)
-   pkt.seq = seqn
+   pkt.seq = i*(50)
    nftest_send_phy('nf2c0', pkt)
    # if(PORTS[i] not in pdrop):
    if(PORTS[i] != pdrop[0] and PORTS[i] != pdrop[1] and PORTS[i] != pdrop[2] and PORTS[i] != pdrop[3]):
+      pkt = scapy.Ether(dst=DA, src=SA)/scapy.IP(dst=DST_IP,
+            src=SRC_IP, ttl=TTL-1)/HDR/LOAD
+      pkt.len = (len(LOAD))+eth_hdr+ipv4_hdr+tcp_hdr
+      pkt.seq = i*(50)
       nftest_expect_dma('nf2c0', pkt)
    i = i+1
 

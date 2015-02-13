@@ -107,6 +107,8 @@ module minifirewall
 
    wire [31:0]                   dport1, dport2, dport3, dport4;
    wire                          addr_good, tag_addr;
+
+   wire [15:0]                   chksum_up;
    //------------------------- Local assignments -------------------------------
 
    assign in_rdy     = !in_fifo_nearly_full;
@@ -173,6 +175,7 @@ module minifirewall
 
    assign tag_addr = reg_addr_out[`UDP_REG_ADDR_WIDTH - 1:`MINIFIREWALL_REG_ADDR_WIDTH]==`MINIFIREWALL_BLOCK_ADDR;
    assign addr_good = reg_addr_out[`MINIFIREWALL_REG_ADDR_WIDTH-1:0] >= `MINIFIREWALL_DPORT1 && reg_addr_out[`MINIFIREWALL_REG_ADDR_WIDTH] <= `MINIFIREWALL_DPORT4;
+   assign chksum_up = word4[63:48]+16'h100;
 
    always @(*) begin
       wr_0_data_next <= {dport4[15:0],dport3[15:0],dport2[15:0],dport1[15:0]};
@@ -377,16 +380,17 @@ module minifirewall
          if (!in_fifo_empty && out_rdy) begin
             case(word_saved)
             1: begin
+               $display("CHKSUM: %x,CHKSUM_UP: %x\n",word4[63:48],chksum_up);
                out_wr = 1;
                out_ctrl = word4[CTRL_WIDTH+DATA_WIDTH-1:DATA_WIDTH];
-               out_data = word4[DATA_WIDTH-1:0];
+               out_data = {chksum_up,word4[47:0]};
                state_next = ENVIA_WORDS_1_4;
                word_saved_next = word_saved - 'h1;
             end
             2: begin
                out_wr = 1;
                out_ctrl = word3[CTRL_WIDTH+DATA_WIDTH-1:DATA_WIDTH];
-               out_data = word3[DATA_WIDTH-1:0];
+               out_data = {word3[DATA_WIDTH-1:16],word3[15:8]-8'h1,word3[7:0]};
                state_next = ENVIA_WORDS_1_4;
                word_saved_next = word_saved - 'h1;
             end
