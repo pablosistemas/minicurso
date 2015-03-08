@@ -3,7 +3,7 @@
 #
 # Python register defines
 #
-# Project: MINIFIREWALL2 (firewallintegrado)
+# Project: MINIFIREWALL (firewallintegrado)
 # Description: Firewall to parser packets based in TCP port using register interface
 #
 #############################################################
@@ -27,7 +27,7 @@ def DEVICE_PROJ_DIR ():
     return "firewallintegrado"
 
 def DEVICE_PROJ_NAME ():
-    return "MINIFIREWALL2"
+    return "MINIFIREWALL"
 
 def DEVICE_PROJ_DESC ():
     return "Firewall to parser packets based in TCP port using register interface"

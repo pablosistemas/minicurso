@@ -2,7 +2,7 @@
 #
 # Perl register defines
 #
-# Project: MINIFIREWALL2 (firewallintegrado)
+# Project: MINIFIREWALL (firewallintegrado)
 # Description: Firewall to parser packets based in TCP port using register interface
 #
 #############################################################
@@ -547,7 +547,7 @@ sub DEVICE_MAJOR ()     { 1; }
 sub DEVICE_MINOR ()     { 1; }
 sub DEVICE_REVISION ()  { 2; }
 sub DEVICE_PROJ_DIR ()  { "firewallintegrado"; }
-sub DEVICE_PROJ_NAME () { "MINIFIREWALL2"; }
+sub DEVICE_PROJ_NAME () { "MINIFIREWALL"; }
 sub DEVICE_PROJ_DESC () { "Firewall to parser packets based in TCP port using register interface"; }
 
 

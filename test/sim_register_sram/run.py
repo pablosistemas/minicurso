@@ -32,7 +32,7 @@ nftest_regread_expect((reg_defines.MINIFIREWALL_DPORT4_REG()),pdrop[3])
 
 simReg.regDelay(1000)
 
-nftest_regread_expect((reg_defines.SRAM_BASE_ADDR()),(pdrop[2]<<18|pdrop[3]))
-nftest_regread_expect((reg_defines.SRAM_BASE_ADDR()+4),(pdrop[0]<<18|pdrop[1]))
+nftest_regread_expect((reg_defines.SRAM_BASE_ADDR()),(pdrop[2]<<16|pdrop[3]))
+nftest_regread_expect((reg_defines.SRAM_BASE_ADDR()+4),(pdrop[0]<<16|pdrop[1]))
 
 nftest_finish()

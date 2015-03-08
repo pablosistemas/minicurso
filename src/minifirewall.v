@@ -70,10 +70,15 @@ module minifirewall
    localparam                    WORD4_IP_ADDR =4;
    localparam                    WORD5_TCP_PORT =5;
    localparam                    CONSULTA_REGRAS = 6;
-   localparam                    VERIFICA_PORTA = 7;
-   localparam                    PAYLOAD =8;
-   localparam                    CONSULTA_FALSO = 9;
-   localparam                    ENVIA_WORDS_1_4 = 10;
+   localparam                    CHECK_PORTS = 7;
+   localparam                    ENVIA_WORDS = 8;
+   localparam                    PAYLOAD =9;
+   localparam                    SRAM_PORTS_ADDR = 'h0;
+   localparam                    WORD1 = 4;
+   localparam                    WORD2 = 3;
+   localparam                    WORD3 = 2;
+   localparam                    WORD4 = 1;
+   localparam                    NUM_WORDS_SALVAS = 4;
 
    localparam ICMP        = 'h01;
    localparam TCP        = 'h06;
@@ -100,20 +105,20 @@ module minifirewall
    reg [15:0]                    src_port, src_port_next;
    reg                           drop, drop_next;
 
-   reg [CTRL_WIDTH+DATA_WIDTH-1:0]   word1,word2,word3,word4;
-   reg [CTRL_WIDTH+DATA_WIDTH-1:0]   word1_next,word2_next,word3_next,word4_next;
+   /*reg [CTRL_WIDTH+DATA_WIDTH-1:0]   words [0:NUM_WORDS_SALVAS-1];
+   reg [CTRL_WIDTH+DATA_WIDTH-1:0]   words_next [0:NUM_WORDS_SALVAS-1];*/
+   
+   reg [CTRL_WIDTH+DATA_WIDTH-1:0]   primeira_palavra, segunda_palavra, terceira_palavra, quarta_palavra;
+   reg [CTRL_WIDTH+DATA_WIDTH-1:0]   primeira_palavra_nxt, segunda_palavra_nxt, terceira_palavra_nxt, quarta_palavra_nxt;
 
    reg [2:0]                     word_saved, word_saved_next;
 
    wire [31:0]                   dport1, dport2, dport3, dport4;
-   wire                          addr_good, tag_addr;
+   wire                          addr_good, tag_hit;
 
-   wire [15:0]                   chksum_up;
    //------------------------- Local assignments -------------------------------
 
    assign in_rdy     = !in_fifo_nearly_full;
-   //assign out_data   = in_fifo_data;
-   //assign out_ctrl   = in_fifo_ctrl;
 
    //------------------------- Modules-------------------------------
 
@@ -173,16 +178,16 @@ module minifirewall
    //------------------------- Logic-------------------------------
    //
 
-   assign tag_addr = reg_addr_out[`UDP_REG_ADDR_WIDTH - 1:`MINIFIREWALL_REG_ADDR_WIDTH]==`MINIFIREWALL_BLOCK_ADDR;
-   assign addr_good = reg_addr_out[`MINIFIREWALL_REG_ADDR_WIDTH-1:0] >= `MINIFIREWALL_DPORT1 && reg_addr_out[`MINIFIREWALL_REG_ADDR_WIDTH] <= `MINIFIREWALL_DPORT4;
-   assign chksum_up = word4[63:48]+16'h100;
+   assign tag_hit = reg_addr_out[`UDP_REG_ADDR_WIDTH - 1:`MINIFIREWALL_REG_ADDR_WIDTH]==`MINIFIREWALL_BLOCK_ADDR;
+   //assign addr_good = reg_addr_out[`MINIFIREWALL_REG_ADDR_WIDTH-1:0] >= `MINIFIREWALL_DPORT1 && reg_addr_out[`MINIFIREWALL_REG_ADDR_WIDTH] <= `MINIFIREWALL_DPORT4;
+   assign addr_good = reg_addr_out >= `MINIFIREWALL_DPORT1 && reg_addr_out <= `MINIFIREWALL_DPORT4;
 
    always @(*) begin
       wr_0_data_next <= {dport4[15:0],dport3[15:0],dport2[15:0],dport1[15:0]};
       wr_0_addr_next <= 'h0;
-      if(tag_addr && addr_good && reg_ack_out) begin
+      if(tag_hit && addr_good && reg_ack_out) begin
          wr_0_req_next <= 1;
-         $display("endereco: %x\n", reg_addr_out);
+         //$display("endereco: %x\n", reg_addr_out);
       end
       else
          wr_0_req_next <= 0;
@@ -212,23 +217,27 @@ module minifirewall
       src_port_next = src_port;
       drop_next = drop;
 
-      //early data words
-      word1_next = word1;
-      word2_next = word2;
-      word3_next = word3;
-      word4_next = word4;
+      /*words_next[0] = words[0];
+      words_next[1] = words[1];
+      words_next[2] = words[2];
+      words_next[3] = words[3];*/
       word_saved_next = word_saved;
+
+      primeira_palavra_nxt = primeira_palavra;
+      segunda_palavra_nxt = segunda_palavra;
+      terceira_palavra_nxt = terceira_palavra;
+      quarta_palavra_nxt = quarta_palavra;
 
       case(state)
       SKIP_HDR: begin
          if (!in_fifo_empty && out_rdy) begin
-            //out_wr = 1;
             in_fifo_rd_en = 1;
+            $display("DATACTRL: %x %x",in_fifo_data, in_fifo_ctrl);
             if(in_fifo_ctrl == 'h0) begin
                state_next = WORD2_CHECK_IPV4;
-               word1_next = {in_fifo_ctrl,in_fifo_data};
+               primeira_palavra_nxt = {in_fifo_ctrl,in_fifo_data};
+               //words_next[word_saved] = {in_fifo_ctrl,in_fifo_data};
                word_saved_next = word_saved + 'h1;
-               //state_next = PAYLOAD;
             end
             else begin
                out_wr = 1;
@@ -242,15 +251,18 @@ module minifirewall
          $display("WORD2: %h\n",word_saved);
          $display("CPCI_NF2_DATA: %d, ADDR: %d\n",`CPCI_NF2_DATA_WIDTH,`CPCI_NF2_ADDR_WIDTH);
          if (!in_fifo_empty && out_rdy) begin
-            //out_wr = 1;
             if(in_fifo_data[15:12] != 4'h4) begin
-               {out_ctrl,out_data} = word1;
+            //se nao for ipv4 apenas encaminha o pacote
+               word_saved_next = word_saved - 'h1;
+               //{out_ctrl,out_data} = words[0]; //word1;
+               {out_ctrl,out_data} = primeira_palavra; //word1;
                out_wr = 1;
                in_fifo_rd_en = 0;
                state_next = PAYLOAD;
             end
             else begin
-               word2_next = {in_fifo_ctrl,in_fifo_data};
+               //words_next[word_saved] = {in_fifo_ctrl,in_fifo_data};
+               segunda_palavra_nxt = {in_fifo_ctrl,in_fifo_data};
                word_saved_next = word_saved + 'h1;
                state_next = WORD3_CHECK_TCP;
                in_fifo_rd_en = 1;
@@ -263,13 +275,14 @@ module minifirewall
          $display("WORD3\n");
          $display("TTL: %d, PROTO: %d\n",in_fifo_data[15:8],in_fifo_data[7:0]);
          if (!in_fifo_empty && out_rdy) begin
-            //out_wr = 1;
             case(in_fifo_data[7:0]) //protocolo
                TCP: begin
                   $display("NEWTCP\n");
                   in_fifo_rd_en = 1;
                   num_TCP_next = num_TCP + 'h1;
-                  word3_next = {in_fifo_ctrl,in_fifo_data};
+                  //decrementa TTL
+                  //words_next[word_saved] = {in_fifo_ctrl,in_fifo_data[63:16],in_fifo_data[15:8]-8'h1,in_fifo_data[7:0]};
+                  terceira_palavra_nxt = {in_fifo_ctrl,in_fifo_data[63:16],in_fifo_data[15:8]-8'h1,in_fifo_data[7:0]};
                   word_saved_next = word_saved + 'h1;
                   state_next = WORD4_IP_ADDR;
                end
@@ -277,12 +290,14 @@ module minifirewall
                   $display("NAOTCP\n");
                   in_fifo_rd_en = 0;
                   out_wr = 1;
-                  {out_ctrl,out_data} = word1;
-               //decrement because word1 is already forward
+                  //{out_ctrl,out_data} = words[0]; //word1;
+                  {out_ctrl,out_data} = primeira_palavra;
+               //decrementa pq ja enviamos a 1ª palavra
                   word_saved_next = word_saved - 'h1;
-               //word_saved equal 1 sends word4, so we copy here   
-                  word4_next = word2;
-                  state_next = ENVIA_WORDS_1_4;
+               //4ª word<=2ª para aproveitar estado de ENVIA_WORDS   
+                  //words_next[3] = words[1];
+                  quarta_palavra_nxt = segunda_palavra;
+                  state_next = ENVIA_WORDS;
                end
             endcase
          end
@@ -294,8 +309,8 @@ module minifirewall
          $display("IP: %d:%d:%d:%d\n",in_fifo_data[47:40],in_fifo_data[39:32],in_fifo_data[31:24],in_fifo_data[23:16]);
          if (!in_fifo_empty && out_rdy) begin
             in_fifo_rd_en = 1;
-            //out_wr = 1;
-            word4_next = {in_fifo_ctrl,in_fifo_data};
+            //words_next[word_saved] = {in_fifo_ctrl,in_fifo_data[63:48]+16'h100,in_fifo_data[47:0]};
+            quarta_palavra_nxt = {in_fifo_ctrl,in_fifo_data[63:48]+16'h100,in_fifo_data[47:0]};
             word_saved_next = word_saved + 'h1;
             state_next = WORD5_TCP_PORT;
          end
@@ -306,62 +321,39 @@ module minifirewall
          $display("WORD5\n");
          $display("PORTA: %d, %d\n",in_fifo_data[47:32],in_fifo_data[31:16]);
          if (!in_fifo_empty && out_rdy) begin
-            //out_wr = 1;
-            //in_fifo_rd_en = 1;
             dst_port_next = in_fifo_data[31:16];
             src_port_next = in_fifo_data[47:32];
-            //state_next = PAYLOAD;
             state_next = CONSULTA_REGRAS;
-            //synthesis translate_off
-            //state_next = CONSULTA_FALSO;
-            //synthesis translate_on
          end
          else
             state_next = WORD5_TCP_PORT;
       end
-      CONSULTA_FALSO: begin
-         $display("CONSULTA_FALSO. DSTPORT: %d, SRCPORT: %d\n",dst_port,src_port);
-         /*if((dst_port >=80 && dst_port < 95) || 
-               (dst_port >=1010 && dst_port < 1025)) begin*/
-         //between 1010 and 1060 there are 50 pkts that will be dropped
-         if (dst_port >= 1010 && dst_port < 1060) begin
-            drop_next = 1;
-            state_next = PAYLOAD;
-            $display("REJECTED\n");
-         end
-         else begin
-            drop_next = 0;
-            state_next = ENVIA_WORDS_1_4;
-            $display("ACCEPTED\n");
-         end
-      end
       CONSULTA_REGRAS: begin
          $display("CONSULTA REGRAS\n");
          rd_0_req_next = 1;
-         rd_0_addr_next = 'h0;
-         state_next = VERIFICA_PORTA;
+         rd_0_addr_next = SRAM_PORTS_ADDR;
+         state_next = CHECK_PORTS;
       end
-      VERIFICA_PORTA: begin
+      CHECK_PORTS: begin
          $display("VERIFICA PORTA\n");
-         //if (rd_0_ack) begin
          if (rd_0_vld) begin
             $display("dataread: %h\n",rd_0_data);
-            if(rd_0_data[17:0] == dst_port) begin
+            if(rd_0_data[15:0] == dst_port) begin
                $display("REJECTED1\n");
                drop_next = 1;
                state_next = PAYLOAD;
             end
-            else if(rd_0_data[35:18] == dst_port) begin
+            else if(rd_0_data[31:16] == dst_port) begin
                $display("REJECTED2\n");
                drop_next = 1;
                state_next = PAYLOAD;
             end
-            else if(rd_0_data[53:36] == dst_port) begin
+            else if(rd_0_data[47:32] == dst_port) begin
                $display("REJECTED3\n");
                drop_next = 1;
                state_next = PAYLOAD;
             end
-            else if(rd_0_data[71:54] == dst_port) begin
+            else if(rd_0_data[63:48] == dst_port) begin
                $display("REJECTED4\n");
                drop_next = 1;
                state_next = PAYLOAD;
@@ -369,43 +361,46 @@ module minifirewall
             else begin
                $display("ACCEPTED\n");
                drop_next = 0;
-               state_next = ENVIA_WORDS_1_4;
+               state_next = ENVIA_WORDS;
             end
          end
          else
-            state_next = VERIFICA_PORTA;
+            state_next = CHECK_PORTS;
       end
-      ENVIA_WORDS_1_4: begin
-         $display("ENVIA_WORDS_1_4: %h\n", word_saved);
+      ENVIA_WORDS: begin
+         $display("ENVIA_WORDS: %h\n", word_saved);
          if (!in_fifo_empty && out_rdy) begin
             case(word_saved)
-            1: begin
-               $display("CHKSUM: %x,CHKSUM_UP: %x\n",word4[63:48],chksum_up);
+            WORD4: begin
                out_wr = 1;
-               out_ctrl = word4[CTRL_WIDTH+DATA_WIDTH-1:DATA_WIDTH];
-               out_data = {chksum_up,word4[47:0]};
-               state_next = ENVIA_WORDS_1_4;
+               //out_ctrl = words[3][CTRL_WIDTH+DATA_WIDTH-1:DATA_WIDTH];
+               //out_data = words[3][DATA_WIDTH-1:0];
+               out_ctrl = quarta_palavra[CTRL_WIDTH+DATA_WIDTH-1:DATA_WIDTH];
+               out_data = quarta_palavra[DATA_WIDTH-1:0];
+               state_next = ENVIA_WORDS;
                word_saved_next = word_saved - 'h1;
             end
-            2: begin
+            WORD3: begin
                out_wr = 1;
-               out_ctrl = word3[CTRL_WIDTH+DATA_WIDTH-1:DATA_WIDTH];
-               out_data = {word3[DATA_WIDTH-1:16],word3[15:8]-8'h1,word3[7:0]};
-               state_next = ENVIA_WORDS_1_4;
+               /*out_ctrl = words[2][CTRL_WIDTH+DATA_WIDTH-1:DATA_WIDTH];
+               out_data = words[2][DATA_WIDTH-1:0];*/
+               out_ctrl = terceira_palavra[CTRL_WIDTH+DATA_WIDTH-1:DATA_WIDTH];
+               out_data = terceira_palavra[DATA_WIDTH-1:0];
+               state_next = ENVIA_WORDS;
                word_saved_next = word_saved - 'h1;
             end
-            3: begin
+            WORD2: begin
                out_wr = 1;
-               out_ctrl = word2[CTRL_WIDTH+DATA_WIDTH-1:DATA_WIDTH];
-               out_data = word2[DATA_WIDTH-1:0];
-               state_next = ENVIA_WORDS_1_4;
+               out_ctrl = segunda_palavra[CTRL_WIDTH+DATA_WIDTH-1:DATA_WIDTH];
+               out_data = segunda_palavra[DATA_WIDTH-1:0];
+               state_next = ENVIA_WORDS;
                word_saved_next = word_saved - 'h1;
             end
-            4: begin
+            WORD1: begin
                out_wr = 1;
-               out_ctrl = word1[CTRL_WIDTH+DATA_WIDTH-1:DATA_WIDTH];
-               out_data = word1[DATA_WIDTH-1:0];
-               state_next = ENVIA_WORDS_1_4;
+               out_ctrl = primeira_palavra[CTRL_WIDTH+DATA_WIDTH-1:DATA_WIDTH];
+               out_data = primeira_palavra[DATA_WIDTH-1:0];
+               state_next = ENVIA_WORDS;
                word_saved_next = word_saved - 'h1;
             end
             default: begin
@@ -416,7 +411,7 @@ module minifirewall
             endcase
          end
          else
-            state_next = ENVIA_WORDS_1_4;
+            state_next = ENVIA_WORDS;
       end
       PAYLOAD: begin
          $display("PAYLOAD\n");
@@ -431,7 +426,7 @@ module minifirewall
             else begin
                if(drop) begin
                   //$display("DROPPED\n");
-                  out_ctrl = 'h54; //Next module won't recognize pkt
+                  out_ctrl = 'h42; //Next module won't recognize pkt
                end
                else begin
                   //$display("NOTDROPPED\n");
@@ -469,10 +464,18 @@ module minifirewall
          src_port <= src_port_next;
          drop <= drop_next;
          word_saved <= word_saved_next;
-         word1 <= word1_next;
+         /*word1 <= word1_next;
          word2 <= word2_next;
          word3 <= word3_next;
-         word4 <= word4_next;
+         word4 <= word4_next;*/
+         /*words[0] <= words_next[0];
+         words[1] <= words_next[1];
+         words[2] <= words_next[2];
+         words[3] <= words_next[3];*/
+         primeira_palavra <= primeira_palavra_nxt;
+         segunda_palavra <= segunda_palavra_nxt;
+         terceira_palavra <= terceira_palavra_nxt;
+         quarta_palavra <= quarta_palavra_nxt;
       end
    end
 

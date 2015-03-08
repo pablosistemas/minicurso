@@ -224,18 +224,18 @@ module nf2_core #(
 
    wire                               wr_0_req;
    wire [`SRAM_ADDR_WIDTH-1:0]        wr_0_addr;
-   wire [DATA_WIDTH+CTRL_WIDTH-1:0]   wr_0_data;
+   wire [DATA_WIDTH/*+CTRL_WIDTH*/-1:0]   wr_0_data;
    wire                               wr_0_ack;
 
    wire                               rd_0_req;
    wire [`SRAM_ADDR_WIDTH-1:0]        rd_0_addr;
-   wire [DATA_WIDTH+CTRL_WIDTH-1:0]   rd_0_data;
+   wire [DATA_WIDTH/*+CTRL_WIDTH*/-1:0]   rd_0_data;
    wire                               rd_0_vld;
    wire                               rd_0_ack;
 
    wire [`SRAM_ADDR_WIDTH-1:0]        sram_addr;
-   wire [`SRAM_ADDR_WIDTH-1:0]        sram_addr1;
-   wire [`SRAM_ADDR_WIDTH-1:0]        sram_addr2;
+   /*wire [`SRAM_ADDR_WIDTH-1:0]        sram_addr1;
+   wire [`SRAM_ADDR_WIDTH-1:0]        sram_addr2;*/
 
    wire [`CPCI_NF2_ADDR_WIDTH-1:0]    cpci_reg_addr;
    wire [`CPCI_NF2_DATA_WIDTH-1:0]    cpci_reg_rd_data;
@@ -510,9 +510,9 @@ module nf2_core #(
          .rd_0_vld           (rd_0_vld),
 
          // --- sram access
-         //.sram_addr          (sram_addr),
-         .sram_addr1         (sram_addr1),
-         .sram_addr2         (sram_addr2),
+         .sram_addr          (sram_addr),
+         /*.sram_addr1         (sram_addr1),
+         .sram_addr2         (sram_addr2),*/
          .sram_wr_data       (sram_wr_data),
          .sram_rd_data       (sram_rd_data),
          .sram_we            (sram_we),
@@ -539,8 +539,8 @@ module nf2_core #(
       assign sram2_we     = sram_we;
       assign sram1_bw     = sram_bw[3:0];
       assign sram2_bw     = sram_bw[7:4];
-      assign sram1_addr   = sram_addr1;
-      assign sram2_addr   = sram_addr2;
+      assign sram1_addr   = sram_addr;//1;
+      assign sram2_addr   = sram_addr;//2;
       assign sram1_tri_en  = sram_tri_en;
       assign sram2_tri_en  = sram_tri_en;
 
@@ -562,8 +562,9 @@ module nf2_core #(
          .rd_0_vld           (rd_0_vld),
 
           // --- sram_access
-         .sram_addr1         (sram_addr1),
-         .sram_addr2         (sram_addr2),
+         /*.sram_addr1         (sram_addr1),
+         .sram_addr2         (sram_addr2),*/
+         .sram_addr          (sram_addr),
          .sram_wr_data       (sram_wr_data),
          .sram_rd_data       (sram_rd_data),
          .sram_we            (sram_we),
@@ -590,7 +591,7 @@ module nf2_core #(
       assign sram2_we     = ~ 1'b0; // Active low
       assign sram1_bw     = sram_bw;
       assign sram2_bw     = ~ 1'b0; // Active low
-      assign sram1_addr   = sram_addr1;
+      assign sram1_addr   = sram_addr;//1;
       assign sram2_addr   = 'h0;
       assign sram1_tri_en  = sram_tri_en;
       assign sram2_tri_en  = 1'b0;

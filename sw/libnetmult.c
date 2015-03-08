@@ -32,11 +32,9 @@ int main()
    }
    fscanf(arq,"%d",&num_pkts);
    ports_to_drop = malloc(num_pkts*sizeof(uint16_t));
-   printf("npkts: %d \n",num_pkts);
    for(i=0;i<num_pkts;i++)
       fscanf(arq,"%hd",&ports_to_drop[i]);
    fclose(arq);
-   printf("npkts2: %d \n",num_pkts);
    payload_s = 10;
    payload = malloc(payload_s*sizeof(uint8_t));
    memset(payload,0,payload_s);
@@ -48,7 +46,6 @@ int main()
    enet_src = libnet_get_hwaddr(l);
    src_ip = libnet_get_ipaddr4(l);
    dst_ip = (192) | (168<<8) | (101<<16) | (92<<24); 
-   printf("npkts3: %d \n",num_pkts);
    sprintf((char*)SA,"%02x:%02x:%02x:%02x:%02x:%02x",
          (uint8_t)enet_src->ether_addr_octet[0],
          (uint8_t)enet_src->ether_addr_octet[1],
@@ -56,7 +53,6 @@ int main()
          (uint8_t)enet_src->ether_addr_octet[3],
          (uint8_t)enet_src->ether_addr_octet[4],
          (uint8_t)enet_src->ether_addr_octet[5]);
-   printf("npkts4: %d \n",num_pkts);
 
    sprintf((char*)DA,"%02x:%02x:%02x:%02x:%02x:%02x",
          0xD0,0x27,0x88,0xBC,0xA8,0xE9);
@@ -94,12 +90,10 @@ int main()
          goto bad;
       }
       else
-         printf("Wrote %d byte TCP packet.\nSeqNum: %d, ackNum: %d\n\n",c,seqn,seqn+LIBNET_TCP_H+payload_s+1);
+         printf("Wrote TCP packet.Dport: %d\n", ports_to_drop[i]);
       
       sleep(1);
-      printf("%d %d\n",num_pkts, i);
    }
-   printf("saiu 1\n");
    /*--------------ACK----------------*/
    for(j=0;j<num_pkts;j++){
       dst_prt = 15;
@@ -133,12 +127,11 @@ int main()
          printf("libnet_write() error\n");
          goto bad;
       }
-      else
-         printf("Wrote %d byte TCP packet.\nSeqNum: %d, ackNum: %d\n\n",c,seqn,seqn+LIBNET_TCP_H+payload_s+1);
-      
+      else {
+         printf("Wrote byte TCP packet.\n");
+      }
       sleep(1);
    }
-   printf("saiu 2\n");
    libnet_destroy(l);
    printf("htcp: %d, hipv4: %d, heth: %d\n",LIBNET_TCP_H,LIBNET_IPV4_H,LIBNET_ETH_H);
    return 0;

@@ -38,6 +38,9 @@ codump : counterdump.c
 cdump : cdump.c
 	gcc -Wall cdump.c -I/usr/include/ -o cdump /root/netfpga/lib/C/common/libnf2.so
 
+nffw : nffw.c
+	gcc -Wall nffw.c -std=gnu99 -I/usr/include/ -o nffw /root/netfpga/lib/C/common/libnf2.so
+
 install:
 
 .PHONY: all clean install

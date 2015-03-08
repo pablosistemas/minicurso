@@ -148,10 +148,10 @@ module user_data_path
      output [SRAM_ADDR_WIDTH-1:0]       wr_0_addr,
      output                             wr_0_req,
      input                              wr_0_ack,
-     output [SRAM_DATA_WIDTH-1:0]       wr_0_data,
+     output [DATA_WIDTH/*SRAM_DATA_WIDTH*/-1:0]       wr_0_data,
 
      input                              rd_0_ack,
-     input  [SRAM_DATA_WIDTH-1:0]       rd_0_data,
+     input  [DATA_WIDTH/*SRAM_DATA_WIDTH*/-1:0]       rd_0_data,
      input                              rd_0_vld,
      output [SRAM_ADDR_WIDTH-1:0]       rd_0_addr,
      output                             rd_0_req,
@@ -359,7 +359,7 @@ module user_data_path
     );
 
     minifirewall #(
-        .DATA_WIDTH(DATA_WIDTH+CTRL_WIDTH),
+        .DATA_WIDTH(DATA_WIDTH/*+CTRL_WIDTH*/),
         .CTRL_WIDTH(CTRL_WIDTH),
         .SRAM_ADDR_WIDTH(SRAM_ADDR_WIDTH),
         .SRAM_DATA_WIDTH(SRAM_DATA_WIDTH),

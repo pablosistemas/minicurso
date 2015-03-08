@@ -4,26 +4,26 @@
 	<nf:prefix>minifirewall</nf:prefix>
 	<nf:location>udp</nf:location>
 	<nf:description>Registers for minifirewall</nf:description>
-	<nf:blocksize>64</nf:blocksize>
+	<nf:blocksize>128</nf:blocksize>
 	<nf:registers>
 	   <nf:register>
          <nf:name>dport1</nf:name>
-         <nf:description>dport1 will be filtered</nf:description>
+         <nf:description>Porta de destino 1</nf:description>
          <nf:type>generic_software32</nf:type>
       </nf:register>
 	   <nf:register>
          <nf:name>dport2</nf:name>
-         <nf:description>dport2 will be filtered</nf:description>
+         <nf:description>Porta de destino 2</nf:description>
          <nf:type>generic_software32</nf:type>
       </nf:register>
 	   <nf:register>
          <nf:name>dport3</nf:name>
-         <nf:description>dport3 will be filtered</nf:description>
+         <nf:description>Porta de destino 3</nf:description>
          <nf:type>generic_software32</nf:type>
       </nf:register>
 	   <nf:register>
          <nf:name>dport4</nf:name>
-         <nf:description>dport4 will be filtered</nf:description>
+         <nf:description>Porta de destino 4</nf:description>
          <nf:type>generic_software32</nf:type>
       </nf:register>
 	</nf:registers>

@@ -1,7 +1,7 @@
 /********************************************************
  *
  * C register defines file
- * Project: MINIFIREWALL2 (firewallintegrado)
+ * Project: MINIFIREWALL (firewallintegrado)
  * Description: Firewall to parser packets based in TCP port using register interface
  *
  ********************************************************/
@@ -16,7 +16,7 @@
 #define DEVICE_MINOR       1
 #define DEVICE_REVISION    2
 #define DEVICE_PROJ_DIR    "firewallintegrado"
-#define DEVICE_PROJ_NAME   "MINIFIREWALL2"
+#define DEVICE_PROJ_NAME   "MINIFIREWALL"
 #define DEVICE_PROJ_DESC   "Firewall to parser packets based in TCP port using register interface"
 
 

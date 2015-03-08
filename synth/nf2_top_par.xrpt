@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="par" timeStamp="Wed Feb  4 10:57:50 2015">
+  <application stringID="par" timeStamp="Fri Mar  6 18:15:12 2015">
     <task stringID="PAR_DEVICE_UTILIZATION">
       <section stringID="PAR_DEVICE_UTLIZATION">
         <item AVAILABLE="692" dataType="int" stringID="PAR_EXTERNAL_IOB" value="356">
@@ -15,12 +15,12 @@
     </task>
     <task stringID="PAR_PAR">
       <section stringID="PAR_DESIGN_SUMMARY">
-        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="15 mins 23 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="15 mins 23 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="10 mins 24 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="10 mins 24 secs "/>
         <item dataType="int" stringID="PAR_UNROUTES" value="0"/>
-        <item dataType="float" stringID="PAR_TIMING_SCORE" value="7850.000000"/>
-        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="15 mins 46 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="15 mins 45 secs "/>
+        <item dataType="float" stringID="PAR_TIMING_SCORE" value="413886.000000"/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="10 mins 47 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="10 mins 47 secs "/>
       </section>
     </task>
     <task stringID="PAR_par">

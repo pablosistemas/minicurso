@@ -31,7 +31,7 @@
 static struct nf2device nf2;
 
 /*Dports will be record in memory to firewall drop pkts with them*/
-uint16_t pdrop[4] = {5151, 0, 0, 0};
+uint16_t pdrop[4] = {0, 0, 0, 0};
 
 /* Function declarations */
 void dumpCounts();
@@ -53,7 +53,13 @@ int main(int argc, char *argv[])
     {
       exit(1);
     }
-
+  if(argc > 5){
+      printf("Numero de argumentos deve ser < 4\n");
+      argc=5;
+  } 
+  for(int i=0; i< argc-1; i++){
+     pdrop[i] = atoi(argv[i+1]);
+  }
   dumpCounts();
 
   closeDescriptor(&nf2);
@@ -61,7 +67,7 @@ int main(int argc, char *argv[])
   return 0;
 }
 
-void dumpCounts()
+void dumpCounts(char **argv)
 {
   unsigned val;
  
