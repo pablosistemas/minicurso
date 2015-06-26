@@ -1,0 +1,128 @@
+\section*{Apêndice A: Diretivas de programação}
+\label{sec.impl.apendice}
+
+Neste material adotamos algumas convenções para facilitar o
+entendimento, listadas a seguir. Alguns dos exemplos citados são
+recomendações de boas técnicas comuns em linguagens de programação,
+enquanto outras são necessárias para que o hardware resultante
+alcance o comportamento desejado do projeto.\footnote{As
+recomendações foram extraídas e adaptadas de
+\sssf{http://www.xilinx.com/itp/xilinx10/books/docs/sim/sim.pdf} e
+\sssf{https://github.com/NetFPGA/netfpga/wiki/VerilogCodingGuidelines}.}
+
+\begin{itemize}
+
+\item Use constantes e parâmetros para conferir legibilidade ao
+código.  Defina constantes em letra \ssf{MAIÚSCULA}.
+
+\item Trechos do código que fazem asserções, monitoram ou imprimem
+valores de variáveis para teste do projeto devem estar posicionadas
+entre as diretivas \ssf{synthesis translate\_off} e \ssf{synthesis
+translate\_on}. Estes trechos são executados na simulação, mas são
+ignorados pelo sintetizador na criação do \emph{bitfile} do projeto.
+
+\item Em circuitos sequenciais utilize somente atribuições
+não-blocantes (\ssf{<=}) dessa forma todas as atribuições dentro do
+bloco (geralmente \ssf{always}) são avaliadas primeiro e depois
+realizadas na simulação e permitem ao sintetizador inferir o
+circuito síncrono. No exemplo a seguir todas as atribuições são
+sincronizadas com o sinal de relógio e recebem os valores anteriores
+dos sinais, ou seja, a sequência não importa:
+
+\begin{verilogcode}
+always @(posedge clk) begin
+    B <= A;
+    C <= B;
+    D <= C;
+end
+\end{verilogcode}
+
+\item Em circuitos combinacionais certifique-se de preencher a lista
+de sensibilidade com todas as variáveis de interesse ou usar
+\ssf{always @(*)}. Nesses circuitos qualquer alteração em alguma das
+variáveis na lista forçam a reexecução do bloco (em geral
+\ssf{always} ou \ssf{assign}) imediatamente. Certifique-se também de
+somente utilizar atribuições blocantes (\ssf{=}) para que o
+sintetizador infira um circuito assíncrono. O parâmetro \ssf{@(*)} é
+um recurso do Verilog que preenche automaticamente a lista de
+sensibilidade com todos os valores atribuídos dentro do bloco. No
+exemplo a seguir, as variáveis B, C e D recebem o valor de A:
+
+\begin{verilogcode}
+always @(*) begin
+    B = A;
+    C = B;
+    D = C;
+end
+\end{verilogcode}
+
+\item Atribua todas as variáveis em todos os estados possíveis do
+seu projeto. Este erro ocorre geralmente em expressões condicionais
+\ssf{if} sem a cláusula \ssf{else} ou blocos \ssf{case}. No exemplo
+abaixo, \ssf{cnt\_nxt} recebe o valor atual de \ssf{cnt} por padrão,
+para evitar que ele deixe de ser atribuído se algum estado não
+requerer sua atualização, e \ssf{state\_nxt} é atribuído em todos os
+estados. 
+
+\item Em lógicas de controle é recomendado criar circuitos
+combinatoriais que recebam os valores do próximo estado. Os valores
+do próximo estado devem ser guardados em registradores em circuitos
+síncronos com a borda do relógio:
+
+\begin{verilogcode}
+always @(*) begin
+    cnt_nxt = cnt;  
+    case(state)
+        INCREMENTA: begin 
+            if(cnt == 99)
+                state_nxt = RESETA;
+            else begin
+                cnt_nxt = cnt+'h1;
+                state_nxt = INCREMENTA;
+        end    
+        RESETA: begin 
+            cnt_nxt = 'h0;
+            state_nxt = INCREMENTA;
+        end
+        DEFAULT: begin
+            state_nxt = RESETA;
+        end
+    endcase
+end
+
+always @(posedge clk) begin
+    if(reset) begin
+        cnt <= 0;
+        state <= INCREMENTA;
+    end
+    else begin
+        cnt <= cnt_nxt;
+        state <= state_nxt;
+    end
+end
+\end{verilogcode}
+%\end{listing}
+
+Nesse exemplo, o circuito combinacional calcula os valores de
+\ssf{state} e \ssf{cnt} que serão atualizados na próxima borda de
+subida do sinal do relógio pelo circuito sequencial.
+
+\item Não utilize atribuições com atrasos pois são normalmente
+ignoradas pelas ferramentas de síntese, o que pode resultar num
+comportamento inesperado do projeto.
+
+\begin{verilogcode}
+assign #10 Q = 0; // do not use
+\end{verilogcode}
+
+\item Utilize blocos \ssf{generate} para gerar várias instâncias de
+módulos ou blocos de código. Na \secstr~\ref{sec:impl.mem}
+utilizamos \ssf{generate} para criar o vetor com os bits de paridade
+dos dados a serem gravados na memória;
+
+\item Outras dicas podem ser encontradas nas páginas Web mencionadas
+e livros especializados.
+
+\end{itemize}
+
+
