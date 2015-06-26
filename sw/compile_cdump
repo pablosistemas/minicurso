@@ -1,1 +1,0 @@
-gcc -Wall -L/root/netfpga/lib/C/common/ -lnf2 counterdump.c -o counterdump
